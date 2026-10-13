@@ -187,6 +187,17 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
   .drawer,.toast,.btn{transition:none}
   html{scroll-behavior:auto}
 }
+/* demo video */
+.demo{border:4px solid var(--ink);border-radius:30px;overflow:hidden;background:var(--ink);box-shadow:10px 10px 0 var(--pink)}
+.demo-screen{position:relative}
+.demo-screen svg{display:block;width:100%;height:auto}
+.demo-cap{position:absolute;left:14px;bottom:12px;background:var(--yellow);color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:5px 16px;font-weight:800;font-size:clamp(.8rem,2.2vw,1.2rem);max-width:calc(100% - 28px)}
+.demo-cap:empty{display:none}
+.demo-bar{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--ink);color:var(--cream)}
+.demo-play{border:3px solid var(--cream);background:var(--pink);color:var(--ink);border-radius:999px;padding:8px 18px;font-weight:800;white-space:nowrap}
+#demoSeek{flex:1;min-width:0;accent-color:var(--yellow)}
+.demo-bar .mono{font-variant-numeric:tabular-nums;white-space:nowrap}
+
 /* pissoir USP */
 .usp{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--ink);color:var(--cream);border-radius:40px;padding:40px;margin-block:24px;box-shadow:10px 10px 0 var(--pink)}
 .usp-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
@@ -253,6 +264,69 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
       <span class="sticker s2" data-i18n="st2"></span>
       <span class="sticker s3" data-i18n="st3"></span>
       <div id="heroPouch" style="display:contents"></div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="sec-head">
+      <h2 data-i18n="demoTitle"></h2>
+      <p data-i18n="demoText"></p>
+    </div>
+    <div class="demo">
+      <div class="demo-screen">
+        <svg id="demoSvg" viewBox="0 0 640 360" role="img" data-i18n-aria="demoTitlePlain">
+          <defs>
+            <pattern id="dtiles" width="36" height="36" patternUnits="userSpaceOnUse"><rect width="36" height="36" fill="#7CC8FF"/><path d="M36 0H0V36" fill="none" stroke="#FFF8E7" stroke-width="3"/></pattern>
+            <clipPath id="bodyClip"><path d="M0 -45 C -50 -80 -50 -170 -2 -210 L 10 -204 C -10 -160 -5 -100 38 -66 C 30 -46 12 -40 0 -45 Z"/></clipPath>
+          </defs>
+          <rect width="640" height="320" fill="url(#dtiles)"/>
+          <rect y="320" width="640" height="40" fill="#1A1033"/>
+          <g transform="translate(60 50)"><rect width="96" height="40" rx="8" fill="#FFF8E7" stroke="#1A1033" stroke-width="3"/><text x="48" y="28" text-anchor="middle" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="20" fill="#1A1033">WC</text></g>
+          <rect x="521" y="96" width="8" height="40" fill="#C9CED6" stroke="#1A1033" stroke-width="3"/>
+          <circle cx="525" cy="96" r="8" fill="#C9CED6" stroke="#1A1033" stroke-width="3"/>
+          <rect x="490" y="130" width="70" height="140" rx="30" fill="#FFFFFF" stroke="#1A1033" stroke-width="5"/>
+          <rect x="502" y="178" width="46" height="76" rx="20" fill="#E6EEF7" stroke="#1A1033" stroke-width="3"/>
+          <rect x="518" y="268" width="14" height="52" fill="#C9CED6" stroke="#1A1033" stroke-width="3"/>
+          <path id="dArc" fill="none" stroke="#1A1033" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" opacity="0"/>
+          <g id="dGuy">
+            <g id="dLegB"><line x1="0" y1="0" x2="0" y2="46" stroke="#1A1033" stroke-width="5" stroke-linecap="round"/><ellipse cx="7" cy="48" rx="12" ry="6" fill="#FF6FB5" stroke="#1A1033" stroke-width="3"/></g>
+            <line id="dArmB" x1="8" y1="-118" x2="-12" y2="-78" stroke="#1A1033" stroke-width="5" stroke-linecap="round"/>
+            <g transform="scale(-1 1)">
+            <path d="M0 -45 C -50 -80 -50 -170 -2 -210 L 10 -204 C -10 -160 -5 -100 38 -66 C 30 -46 12 -40 0 -45 Z" fill="#FFD60A" stroke="#1A1033" stroke-width="4" stroke-linejoin="round"/>
+            <g clip-path="url(#bodyClip)"><rect x="-60" y="-106" width="120" height="9" fill="#1A1033"/></g></g>
+            <g id="dLegF"><line x1="0" y1="0" x2="0" y2="46" stroke="#1A1033" stroke-width="5" stroke-linecap="round"/><ellipse cx="7" cy="48" rx="12" ry="6" fill="#FF6FB5" stroke="#1A1033" stroke-width="3"/></g>
+            <g transform="scale(-1 1)"><path d="M-3 -208 L2 -222 L10 -219 L8 -205 Z" fill="#6B4A2B" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="30" cy="-58" r="4" fill="#6B4A2B"/>
+            <g transform="translate(-24 -158)"><rect x="-15" y="-7" width="15" height="12" rx="4" fill="#1A1033"/><rect x="2" y="-7" width="15" height="12" rx="4" fill="#1A1033"/><line x1="-1" y1="-3" x2="3" y2="-3" stroke="#1A1033" stroke-width="3"/><path id="dGlint" d="M12 -4 l2 -6 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 z" fill="#FFFFFF" opacity="0"/></g>
+            <path d="M-32 -138 Q -22 -128 -12 -138" fill="none" stroke="#1A1033" stroke-width="3" stroke-linecap="round"/>
+            <g transform="translate(-48 -112)"><rect width="14" height="24" rx="6" fill="#FF6FB5" stroke="#1A1033" stroke-width="2.5"/><rect id="dLid" x="-1" y="-4" width="16" height="8" rx="3" fill="#FFD60A" stroke="#1A1033" stroke-width="2.5"/></g></g>
+            <g id="dCensor" opacity="0" transform="rotate(-6 30 -84)"><rect x="-6" y="-106" width="80" height="42" rx="6" fill="#1A1033"/><text id="dCensorTxt" x="34" y="-79" text-anchor="middle" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="15" fill="#FFD60A"></text></g>
+            <line id="dArmF" stroke="#1A1033" stroke-width="5" stroke-linecap="round"/>
+            <circle id="dHand" r="7" fill="#FFF8E7" stroke="#1A1033" stroke-width="3"/>
+          </g>
+          <g id="dSheet" opacity="0"><path d="M-8 0 C -14 -16, 2 -22, -2 -36 C 12 -28, 20 -18, 10 0 Z" fill="#FFFFFF" stroke="#1A1033" stroke-width="3" stroke-linejoin="round"/></g>
+          <g id="dBall" opacity="0"><circle r="9" fill="#FFFFFF" stroke="#1A1033" stroke-width="3"/><path d="M-5 -3 L3 2 M-2 5 L5 -4" stroke="#1A1033" stroke-width="1.5" opacity=".5"/></g>
+          <text id="dPlopp" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="20" fill="#FF6FB5" stroke="#1A1033" stroke-width="1" opacity="0"></text>
+          <text id="dWisch" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="18" fill="#FFF8E7" stroke="#1A1033" stroke-width="1" opacity="0"></text>
+          <g id="dConfetti"></g>
+          <text id="dSlow" x="24" y="34" text-anchor="start" font-family="DM Mono, monospace" font-size="16" letter-spacing="4" fill="#1A1033" opacity="0">● SLOW-MO</text>
+          <text id="dSwish" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="46" text-anchor="middle" fill="#FF6FB5" stroke="#1A1033" stroke-width="2" opacity="0">SWISH!</text>
+          <text id="dPlus" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="30" fill="#FFD60A" stroke="#1A1033" stroke-width="1.5" opacity="0">+3</text>
+          <g id="dEnd" opacity="0">
+            <rect width="640" height="360" fill="#1A1033"/>
+            <g transform="translate(320 120)"><circle r="40" fill="#FFD60A"/><path d="M-22 -8c6 26 34 30 44 6-10 12-30 10-38-8z" fill="#1A1033" stroke="#1A1033" stroke-width="3" stroke-linejoin="round"/></g>
+            <text x="320" y="218" text-anchor="middle" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="48" fill="#FFD60A">Pocket Banana</text>
+            <text id="dEndLine" x="320" y="258" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="24" fill="#FFF8E7"></text>
+            <text x="320" y="300" text-anchor="middle" font-family="DM Mono, monospace" font-size="15" letter-spacing="2" fill="#FF6FB5">STAY FRESH, BESTIE.</text>
+          </g>
+        </svg>
+        <div class="demo-cap" id="demoCap" aria-live="polite"></div>
+      </div>
+      <div class="demo-bar">
+        <button class="demo-play" id="demoPlay" type="button"></button>
+        <input type="range" id="demoSeek" min="0" max="14" step="0.01" value="9.5" data-i18n-aria="demoSeek">
+        <span class="mono" id="demoTime"></span>
+      </div>
     </div>
   </section>
 
@@ -462,6 +536,10 @@ const I18N = {
     uspText:'Kein Mülleimer in Sicht? Egal. Das Pocket-Banana-Tuch schiesst du direkt ins Pissoir. Es zerfällt im Wasser wie Klopapier.',
     u1:'zerfällt im Wasser', u2:'kein Müll in der Hosentasche', u3:'kein Suchen nach dem Eimer',
     shootBtn:'Probier mal: Schiessen', hits:n=> n===1 ? '1 Treffer' : `${n} Treffer`,
+    demoTitle:"So geht's,<br>in 14 Sekunden.", demoTitlePlain:'Demo-Video: So benutzt du Pocket Banana', demoText:'Rein, ziehen, wischen, schiessen, raus. Drück Play.', demoSeek:'Zeitleiste',
+    play:'▶ Abspielen', pause:'❚❚ Pause', replay:'↺ Nochmal',
+    caps:["Muss mal. Kennste.","Ziehen.","Wischen. (Zeigen wir nicht.)","Abstand nehmen …","Zielen.","Schiessen.","Weg. Zerfällt wie Klopapier."],
+    censor:'ZENSIERT', plopp:'plopp!', wisch:'wisch wisch', endLine:'Wischen. Zielen. Weg.',
     lidWord:'Deckel', engWord:'Gravur', preview:(s,l)=>`Pocket Banana Vorschau: ${s} mit ${l}-Deckel`
   },
   en:{
@@ -510,6 +588,10 @@ const I18N = {
     uspText:'No bin in sight? Who cares. Shoot your Pocket Banana wipe straight into the urinal. It breaks down in water like toilet paper.',
     u1:'breaks down in water', u2:'no trash in your pocket', u3:'no hunting for a bin',
     shootBtn:'Try it: shoot', hits:n=> n===1 ? '1 hit' : `${n} hits`,
+    demoTitle:'How it works,<br>in 14 seconds.', demoTitlePlain:'Demo video: how to use Pocket Banana', demoText:'Walk in, pull, wipe, shoot, walk out. Hit play.', demoSeek:'Timeline',
+    play:'▶ Play', pause:'❚❚ Pause', replay:'↺ Replay',
+    caps:["Gotta go. You know.","Pull.","Wipe. (Not showing that.)","Step back …","Aim.","Shoot.","Gone. Breaks down like toilet paper."],
+    censor:'CENSORED', plopp:'pop!', wisch:'wipe wipe', endLine:'Wipe. Aim. Gone.',
     lidWord:'lid', engWord:'Engraving', preview:(s,l)=>`Pocket Banana preview: ${s} with ${l} lid`
   }
 };
@@ -669,6 +751,115 @@ document.getElementById('checkout').addEventListener('click',()=>toast(cart.leng
 let tt;
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2200);}
 
+/* demo video */
+const DUR = 14, $ = id => document.getElementById(id);
+const clamp = (v,a=0,b=1) => Math.max(a,Math.min(b,v));
+const seg = (x,a,b) => clamp((x-a)/(b-a));
+const ease = p => p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
+const lerp = (a,b,p) => a+(b-a)*p;
+const L2 = (A,B,p) => [lerp(A[0],B[0],p), lerp(A[1],B[1],p)];
+const POSE = {REST:[34,-92],CAP:[41,-100],UP:[58,-150],WIPE:[30,-80],HOLD:[52,-122],AIM:[-14,-190],REL:[42,-182]};
+const TGT = [525,214], REL_W = [190+POSE.REL[0], 320+POSE.REL[1]];
+const fly = p => [lerp(REL_W[0],TGT[0],p), lerp(REL_W[1],TGT[1],p) - 150*4*p*(1-p)];
+$('dArc').setAttribute('d', Array.from({length:21},(_,i)=>fly(i/20)).map((q,i)=>`${i?'L':'M'}${q[0].toFixed(1)} ${q[1].toFixed(1)}`).join(' '));
+const CONF = Array.from({length:22},(_,i)=>{
+  const a = -Math.PI/2 + (Math.random()-.5)*2.2, v = 160+Math.random()*180;
+  const el = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  el.setAttribute('width',8); el.setAttribute('height',5);
+  el.setAttribute('fill',['#FF6FB5','#FFD60A','#FFF8E7','#7CC8FF'][i%4]);
+  el.setAttribute('stroke','#1A1033'); el.setAttribute('stroke-width',1);
+  $('dConfetti').appendChild(el);
+  return {el, vx:Math.cos(a)*v, vy:Math.sin(a)*v, spin:(Math.random()-.5)*900};
+});
+const guyX = x => x<3.2 ? lerp(-60,420,x/3.2) : x<6.8 ? 420 : x<7.9 ? lerp(420,190,ease(seg(x,6.8,7.9))) : 190;
+function hand(x){
+  if(x<3.4) return POSE.REST;
+  if(x<3.9) return L2(POSE.REST,POSE.CAP,ease(seg(x,3.4,3.9)));
+  if(x<4.5) return L2(POSE.CAP,POSE.UP,ease(seg(x,3.9,4.5)));
+  if(x<4.8) return POSE.UP;
+  if(x<5.0) return L2(POSE.UP,POSE.WIPE,ease(seg(x,4.8,5.0)));
+  if(x<6.6) return [POSE.WIPE[0]+Math.sin(x*38)*7, POSE.WIPE[1]+Math.cos(x*29)*3];
+  if(x<6.9) return L2(POSE.WIPE,POSE.HOLD,ease(seg(x,6.6,6.9)));
+  if(x<7.9) return POSE.HOLD;
+  if(x<8.8) return L2(POSE.HOLD,POSE.AIM,ease(seg(x,7.9,8.8)));
+  if(x<9.0) return L2(POSE.AIM,POSE.REL,seg(x,8.8,9.0));
+  if(x<10.3) return POSE.REL;
+  return [24,-206];
+}
+const show = (id,on) => $(id).setAttribute('opacity', typeof on==='number' ? on : on?1:0);
+function capIndex(x){ const b=[3.3,4.8,6.7,7.9,9.0,10.2,12.2]; for(let i=0;i<b.length;i++) if(x<b[i]) return i; return -1; }
+function renderDemo(x){
+  const walking = x<3.2 || (x>6.8 && x<7.9);
+  const gx = guyX(x), ph = gx*0.07;
+  const la = walking ? Math.sin(ph)*28 : 0;
+  const bob = walking ? -Math.abs(Math.sin(ph))*4 : 0;
+  const jmp = x>10.3 && x<11.4 ? -Math.abs(Math.sin((x-10.3)*Math.PI/0.55))*28 : 0;
+  const gy = 320 + bob + jmp;
+  $('dGuy').setAttribute('transform',`translate(${gx} ${gy})`);
+  $('dLegB').setAttribute('transform',`translate(-10 -48) rotate(${-la})`);
+  $('dLegF').setAttribute('transform',`translate(10 -48) rotate(${la})`);
+  $('dArmB').setAttribute('x2',-12+la*0.6); $('dArmB').setAttribute('y2',-78);
+  const [hx,hy] = hand(x);
+  const arm = $('dArmF'); arm.setAttribute('x1',30); arm.setAttribute('y1',-124); arm.setAttribute('x2',hx); arm.setAttribute('y2',hy);
+  $('dHand').setAttribute('cx',hx); $('dHand').setAttribute('cy',hy);
+  $('dLid').setAttribute('transform', x>=3.85 && x<4.7 ? 'rotate(-110 15 0)' : '');
+  show('dCensor', seg(x,4.8,5.0)*(1-seg(x,6.55,6.75)));
+  const gl = seg(x,8.2,8.7); $('dGlint').setAttribute('opacity', Math.sin(gl*Math.PI));
+  const hw = [gx+hx, gy+hy];
+  // tissue sheet, then crumpled ball
+  if((x>=3.9 && x<4.95) || (x>=6.6 && x<6.7)){ show('dSheet',1); $('dSheet').setAttribute('transform',`translate(${hw[0]} ${hw[1]}) scale(${x<6.6?1:1-seg(x,6.6,6.7)})`); } else show('dSheet',0);
+  if(x>=6.6 && x<10.45){
+    let bp = hw, sc = seg(x,6.6,6.75), rot = 0;
+    if(x>=9.0){ const p = seg(x,9.0,10.2); bp = fly(p); rot = p*900; }
+    if(x>=10.2) sc = 1-seg(x,10.2,10.45);
+    show('dBall',1); $('dBall').setAttribute('transform',`translate(${bp[0]} ${bp[1]}) rotate(${rot}) scale(${sc})`);
+  } else show('dBall',0);
+  show('dArc', seg(x,8.0,8.6)*(1-seg(x,9.6,10.2))*0.8);
+  show('dSlow', x>=9.0 && x<10.2 ? (Math.floor(x*4)%2 ? 1 : .55) : 0);
+  // fx texts
+  const pp = seg(x,3.9,4.5);
+  $('dPlopp').setAttribute('transform',`translate(${gx+40} ${gy-150-pp*24})`); show('dPlopp', x>=3.9 && x<4.5 ? 1-pp*0.6 : 0);
+  $('dWisch').setAttribute('transform',`translate(${gx-170} ${gy-190+Math.sin(x*9)*4}) rotate(${Math.sin(x*6)*6})`); show('dWisch', x>=5.0 && x<6.6);
+  const sw = seg(x,10.2,10.45);
+  $('dSwish').setAttribute('transform',`translate(${TGT[0]-60} 110) rotate(-8) scale(${sw<1 ? 0.3+sw*0.95 : 1.15-0.15*seg(x,10.45,10.6)})`);
+  show('dSwish', x>=10.2 ? 1-seg(x,11.6,12.0) : 0);
+  $('dPlus').setAttribute('transform',`translate(${TGT[0]+30} ${170-40*seg(x,10.3,11.5)})`);
+  show('dPlus', x>=10.3 ? 1-seg(x,11.0,11.5) : 0);
+  const tc = x-10.2;
+  CONF.forEach(c=>{
+    if(tc<0 || tc>1.4){ c.el.setAttribute('opacity',0); return; }
+    const cx = TGT[0]+c.vx*tc, cy = TGT[1]-20+c.vy*tc+260*tc*tc;
+    c.el.setAttribute('opacity',1-tc/1.4);
+    c.el.setAttribute('transform',`translate(${cx} ${cy}) rotate(${c.spin*tc})`);
+  });
+  show('dEnd', seg(x,12.2,12.8));
+  const ci = capIndex(x);
+  $('demoCap').textContent = ci<0 ? '' : t('caps')[ci];
+  $('demoSeek').value = x;
+  const s = Math.floor(x); $('demoTime').textContent = `0:${String(s).padStart(2,'0')} / 0:${DUR}`;
+}
+let dT = 9.5, dPlaying = false, dStarted = false, dLast = 0;
+function demoBtn(){ $('demoPlay').textContent = dPlaying ? t('pause') : (dT>=DUR ? t('replay') : t('play')); }
+function dTick(ts){
+  if(!dPlaying) return;
+  dT = Math.min(DUR, dT + (ts-dLast)/1000); dLast = ts;
+  if(dT>=DUR){ dPlaying = false; demoBtn(); }
+  renderDemo(dT);
+  if(dPlaying) requestAnimationFrame(dTick);
+}
+$('demoPlay').addEventListener('click',()=>{
+  if(dPlaying){ dPlaying=false; demoBtn(); return; }
+  if(!dStarted || dT>=DUR){ dT = 0; dStarted = true; }
+  dPlaying = true; demoBtn();
+  requestAnimationFrame(ts=>{ dLast = ts; dTick(ts); });
+});
+$('demoSeek').addEventListener('input',e=>{ dStarted = true; dPlaying = false; dT = +e.target.value; renderDemo(dT); demoBtn(); });
+function demoLang(){
+  $('dCensorTxt').textContent = t('censor'); $('dPlopp').textContent = t('plopp');
+  $('dWisch').textContent = t('wisch'); $('dEndLine').textContent = t('endLine');
+  renderDemo(dT); demoBtn();
+}
+
 /* pissoir shoot */
 let hits = 0, flying = false;
 const wipeEl = document.getElementById('wipe'), splashEl = document.getElementById('splash');
@@ -710,7 +901,7 @@ function applyLang(){
   const words = t('ticker');
   document.getElementById('ticker').innerHTML = [...words,...words].map(w=>`<span>${w} ✦</span>`).join('');
   document.getElementById('heroPouch').innerHTML = pouchSVG({shell:'bubblegum',lid:'banana',pattern:'dots',engrave:'FRESH AF'},'hero');
-  renderBuild(); renderPlans(); renderCart(); renderScore();
+  renderBuild(); renderPlans(); renderCart(); renderScore(); demoLang();
 }
 document.getElementById('lang').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
