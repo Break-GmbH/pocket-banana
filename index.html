@@ -187,6 +187,21 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
   .drawer,.toast,.btn{transition:none}
   html{scroll-behavior:auto}
 }
+/* pissoir USP */
+.usp{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--ink);color:var(--cream);border-radius:40px;padding:40px;margin-block:24px;box-shadow:10px 10px 0 var(--pink)}
+.usp-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.usp-copy .mono{color:var(--yellow)}
+.usp h2{font-size:clamp(2.8rem,7vw,5.2rem)}
+.usp .hl{color:var(--ink)}
+.usp-copy p{font-size:1.15rem;max-width:42ch}
+.usp-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.usp-list li{border:2px solid var(--yellow);color:var(--yellow);border-radius:999px;padding:6px 14px;font-weight:600}
+.usp .btn{align-self:flex-start;box-shadow:6px 6px 0 var(--yellow)}
+.usp-art{position:relative;background:var(--sky);border:4px solid var(--cream);border-radius:28px;overflow:hidden;max-width:100%}
+.usp-art svg{display:block;width:100%;height:auto}
+.score{position:absolute;top:14px;left:16px;background:var(--cream);color:var(--ink);border:2.5px solid var(--ink);border-radius:999px;padding:4px 12px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.usp{grid-template-columns:1fr;padding:26px}}
+
 /* language switch */
 .lang{display:inline-flex;border:2.5px solid var(--ink);border-radius:999px;padding:3px;gap:2px;background:var(--cream)}
 .lang button{border:0;background:transparent;border-radius:999px;padding:4px 10px;font-family:var(--mono);font-weight:500;font-size:.8rem}
@@ -249,7 +264,36 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
     <div class="steps">
       <article class="step"><span class="step-n">1</span><h3 data-i18n="s1t"></h3><p data-i18n="s1p"></p></article>
       <article class="step"><span class="step-n">2</span><h3 data-i18n="s2t"></h3><p data-i18n="s2p"></p></article>
-      <article class="step"><span class="step-n">3</span><h3>Fresh</h3><p data-i18n="s3p"></p></article>
+      <article class="step"><span class="step-n">3</span><h3 data-i18n="s3t"></h3><p data-i18n="s3p"></p></article>
+    </div>
+  </section>
+
+  <section id="pissoir" class="usp">
+    <div class="usp-copy">
+      <span class="mono" data-i18n="uspEyebrow"></span>
+      <h2 data-i18n="uspTitle"></h2>
+      <p data-i18n="uspText"></p>
+      <ul class="usp-list"><li data-i18n="u1"></li><li data-i18n="u2"></li><li data-i18n="u3"></li></ul>
+      <button class="btn primary" id="shootBtn" type="button" data-i18n="shootBtn"></button>
+    </div>
+    <div class="usp-art">
+      <span class="score mono" id="score" aria-live="polite"></span>
+      <svg viewBox="0 0 320 300" aria-hidden="true">
+        <defs><pattern id="tiles" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#7CC8FF"/><path d="M40 0H0V40" fill="none" stroke="#FFF8E7" stroke-width="3"/></pattern></defs>
+        <rect width="320" height="300" fill="url(#tiles)"/>
+        <rect x="0" y="262" width="320" height="38" fill="#1A1033"/>
+        <rect x="236" y="14" width="8" height="40" fill="#C9CED6" stroke="#1A1033" stroke-width="3"/>
+        <circle cx="240" cy="16" r="9" fill="#C9CED6" stroke="#1A1033" stroke-width="3"/>
+        <rect x="190" y="50" width="100" height="190" rx="42" fill="#FFFFFF" stroke="#1A1033" stroke-width="5"/>
+        <rect x="206" y="112" width="68" height="104" rx="30" fill="#E6EEF7" stroke="#1A1033" stroke-width="3"/>
+        <ellipse cx="240" cy="196" rx="14" ry="5" fill="#1A1033" opacity=".35"/>
+        <rect x="232" y="238" width="16" height="26" fill="#C9CED6" stroke="#1A1033" stroke-width="3"/>
+        <text id="splash" x="240" y="100" text-anchor="middle" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="30" fill="#FF6FB5" stroke="#1A1033" stroke-width="1.5" opacity="0">SPLASH!</text>
+        <g id="wipe" transform="translate(56 232)">
+          <path d="M-15-14 L13-16 L16 12 L-12 15 Z" fill="#FFFFFF" stroke="#1A1033" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M-8-6 L8 6" stroke="#1A1033" stroke-width="2" opacity=".35"/>
+        </g>
+      </svg>
     </div>
   </section>
 
@@ -377,13 +421,13 @@ const I18N = {
     cart:'Korb', cartOpen:'Warenkorb öffnen', cartClose:'Warenkorb schliessen', cartTitle:'Dein Korb', checkout:'Zur Kasse',
     heroEyebrow:'Hygiene to go · am Gurt',
     heroTitle:'Frisch <span class="hl">untenrum.</span> Überall.',
-    heroText:'Pocket Banana ist die Mini-Kapsel für deinen Gurt, gefüllt mit Intimtüchern für dein bestes Stück. Nach dem Pinkeln, vor dem Date, nach dem Gym. Ziehen, wischen, fresh.',
+    heroText:'Pocket Banana ist die Mini-Kapsel für deinen Gurt, gefüllt mit Intimtüchern für dein bestes Stück. Nach dem Pinkeln, vor dem Date, nach dem Gym. Ziehen, wischen, ab ins Pissoir.',
     heroCta1:'Deine Banana gestalten', heroCta2:'Tücher-Abo checken',
-    st1:'pH 5.5 · hautneutral', st2:'passt an jeden Gurt', st3:'0 % Alkohol',
-    howTitle:'3 Sekunden.<br>Kein Drama.', howText:'Keine nassen Flecken auf der Hose, kein Klopapier, das zerfällt. Einfach ein Tuch, das dafür gemacht ist.',
-    s1t:'Clippen', s1p:'Pocket Banana an Gurt oder Hosenbund clippen. Hält bombenfest, fällt nicht auf.',
-    s2t:'Ziehen', s2p:'Deckel auf, ein Tuch kommt raus. Das nächste wartet schon, frisch und feucht verschlossen.',
-    s3p:'Kurz wischen, Tuch in den Müll. Nie ins WC, versprochen? Fertig, weiter mit deinem Tag.',
+    st1:'pH 5.5 · hautneutral', st2:'passt an jeden Gurt', st3:'pissoir-tauglich',
+    howTitle:'3 Sekunden.<br>Kein Drama.', howText:'Keine nassen Flecken auf der Hose, kein Klopapier, das zerfällt, kein Müll in der Tasche.',
+    s1t:'Ziehen', s1p:'Deckel auf, ein Tuch kommt raus. Das nächste wartet schon, frisch und feucht verschlossen.',
+    s2t:'Wischen', s2p:'Kurz und sanft. pH-hautneutral, ohne Alkohol, brennt nicht.',
+    s3t:'Schiessen', s3p:'Tuch ins Pissoir oder WC, spülen, weg. Es zerfällt wie Klopapier.',
     buildTitle:'Mach sie zu deiner.', buildText:'Farbe, Deckel, Muster und deine Gravur. Die Vorschau zeigt live, was du bekommst.',
     stageDefault:'Deine Banana', shellLbl:'Kapsel-Farbe', lidLbl:'Deckel', patLbl:'Muster',
     engLbl:'Gravur', engHint:'max. 12 Zeichen · + CHF 5.00', engPh:'z. B. BIG BANANA',
@@ -391,8 +435,8 @@ const I18N = {
     wipesTitle:'Was drin ist,<br>zählt.', wipesText:'Die Tücher sind für die empfindlichste Haut gemacht, die du hast. Ohne Zeug, das brennt.',
     factsTitle:'Tuch-Fakten', factsServ:'1 Refill-Kartusche · 20 Tücher',
     fFormat:'Format', fMat:'Material', fMatV:'100 % Bambus-Viskose', fPh:'pH-Wert', fAlc:'Alkohol', fPerf:'Parfum', fPerfV:'0 % (oder Aloe light)',
-    fPlast:'Plastik im Tuch', fBio:'Abbaubar', fBioV:'ja, kompostierbar', fShelf:'Haltbarkeit offen', fShelfV:'8 Wochen',
-    factsFoot:'Dermatologisch getestet. Nicht in die Toilette werfen.',
+    fPlast:'Plastik im Tuch', fBio:'Pissoir-tauglich', fBioV:'ja, zerfällt im Wasser', fShelf:'Haltbarkeit offen', fShelfV:'8 Wochen',
+    factsFoot:'Dermatologisch getestet. Spülbar.',
     p1t:'Kartusche rein, fertig.', p1p:'Refills klicken einfach in die Kapsel. Kein Fummeln, kein Auslaufen.',
     p2t:'Bleibt feucht.', p2p:'Der Deckel schliesst luftdicht. Auch nach Wochen am Gurt.',
     p3t:'Riecht nach nix.', p3p:'Standard ist unparfümiert. Wer mag, nimmt die Aloe-Variante.',
@@ -406,14 +450,18 @@ const I18N = {
     q1:'Wofür genau sind die Tücher?', a1:'Für die Intimpflege am Penis: nach dem Pinkeln gegen den letzten Tropfen, vor dem Date, nach Sport oder einem langen Tag. Sie reinigen sanft, ohne auszutrocknen.',
     q2:'Sieht man die Kapsel am Gurt?', a2:'Sie ist ungefähr so gross wie ein Feuerzeug-Etui. Mit deinem Design sieht sie eher nach Accessoire aus als nach Hygieneprodukt.',
     q3:'Kann ich das Abo pausieren?', a3:'Ja. Pausieren, Rhythmus ändern oder kündigen geht jederzeit in deinem Konto, ohne Mindestlaufzeit.',
-    q4:'Wohin mit benutzten Tüchern?', a4:'In den normalen Abfall oder Kompost. Bitte nie in die Toilette, auch wenn sie abbaubar sind. Das verstopft Leitungen.',
+    q4:'Darf das Tuch wirklich ins Pissoir?', a4:'Ja, genau das ist der Witz an Pocket Banana. Die Tücher bestehen aus kurzen Pflanzenfasern ohne Plastik und zerfallen im Wasser wie Klopapier. Pissoir oder WC, spülen, fertig.',
     q5:'Wie schnell ist der Versand?', a5:'Innerhalb der Schweiz in 1–3 Werktagen, diskret verpackt ohne Aufdruck. Ab CHF 30 ist der Versand gratis.',
     footBig:'Stay fresh,<br>bestie.', footDraft:'Entwurf · Preise sind Platzhalter',
-    ticker:['Frisch untenrum','No cap','Clip it','Wipe it','Stay fresh','pH 5.5','Dein Gurt, dein Style','Abo jederzeit pausieren'],
+    ticker:['Frisch untenrum','No cap','Wipe & shoot','Ab ins Pissoir','Stay fresh','pH 5.5','Dein Gurt, dein Style','Abo jederzeit pausieren'],
     emptyT:'Noch leer.', emptyP:'Gestalte deine Banana oder schnapp dir ein Abo.', remove:'Entfernen',
     shipFree:'Gratis Versand ist dabei.', shipLeft:x=>`Noch ${x} bis zum Gratisversand.`, shipInfo:'Gratis Versand ab CHF 30.',
     added:n=>`${n} ist im Korb`, coDraft:'Checkout ist im Entwurf noch nicht angebunden', coEmpty:'Leg zuerst etwas in den Korb',
     subName:n=>`Abo: ${n}`, subMeta:(n,w)=>`${n} Tücher · alle ${w} Wochen`, refillName:'Refill-Kartusche', refillMeta:'20 Tücher · einmalig',
+    uspEyebrow:'Der Gamechanger', uspTitle:'Wischen.<br>Zielen.<br><span class="hl">Weg.</span>',
+    uspText:'Kein Mülleimer in Sicht? Egal. Das Pocket-Banana-Tuch schiesst du direkt ins Pissoir. Es zerfällt im Wasser wie Klopapier.',
+    u1:'zerfällt im Wasser', u2:'kein Müll in der Hosentasche', u3:'kein Suchen nach dem Eimer',
+    shootBtn:'Probier mal: Schiessen', hits:n=> n===1 ? '1 Treffer' : `${n} Treffer`,
     lidWord:'Deckel', engWord:'Gravur', preview:(s,l)=>`Pocket Banana Vorschau: ${s} mit ${l}-Deckel`
   },
   en:{
@@ -421,13 +469,13 @@ const I18N = {
     cart:'Bag', cartOpen:'Open bag', cartClose:'Close bag', cartTitle:'Your bag', checkout:'Checkout',
     heroEyebrow:'Hygiene to go · on your belt',
     heroTitle:'Fresh <span class="hl">down there.</span> Anywhere.',
-    heroText:'Pocket Banana is the mini capsule for your belt, filled with intimate wipes for your best friend. After peeing, before the date, after the gym. Pull, wipe, fresh.',
+    heroText:'Pocket Banana is the mini capsule for your belt, filled with intimate wipes for your best friend. After peeing, before the date, after the gym. Pull, wipe, shoot it in the urinal.',
     heroCta1:'Design your Banana', heroCta2:'Check the wipe sub',
-    st1:'pH 5.5 · skin-neutral', st2:'fits any belt', st3:'0 % alcohol',
-    howTitle:'3 seconds.<br>Zero drama.', howText:'No wet spots on your pants, no toilet paper falling apart. Just a wipe made for the job.',
-    s1t:'Clip', s1p:'Clip Pocket Banana to your belt or waistband. Holds tight, stays low-key.',
-    s2t:'Pull', s2p:'Pop the lid, one wipe comes out. The next one is already waiting, sealed and moist.',
-    s3p:'Quick wipe, toss it in the bin. Never down the toilet, promise? Done, back to your day.',
+    st1:'pH 5.5 · skin-neutral', st2:'fits any belt', st3:'urinal-safe',
+    howTitle:'3 seconds.<br>Zero drama.', howText:'No wet spots on your pants, no toilet paper falling apart, no trash in your pocket.',
+    s1t:'Pull', s1p:'Pop the lid, one wipe comes out. The next one is already waiting, sealed and moist.',
+    s2t:'Wipe', s2p:'Quick and gentle. pH-neutral, no alcohol, no burn.',
+    s3t:'Shoot', s3p:'Into the urinal or toilet, flush, gone. It breaks down like toilet paper.',
     buildTitle:'Make it yours.', buildText:'Color, lid, pattern and your engraving. The preview shows exactly what you get.',
     stageDefault:'Your Banana', shellLbl:'Capsule color', lidLbl:'Lid', patLbl:'Pattern',
     engLbl:'Engraving', engHint:'max. 12 characters · + CHF 5.00', engPh:'e.g. BIG BANANA',
@@ -435,8 +483,8 @@ const I18N = {
     wipesTitle:"What's inside<br>matters.", wipesText:'These wipes are made for the most sensitive skin you have. Nothing that burns.',
     factsTitle:'Wipe Facts', factsServ:'1 refill cartridge · 20 wipes',
     fFormat:'Size', fMat:'Material', fMatV:'100 % bamboo viscose', fPh:'pH value', fAlc:'Alcohol', fPerf:'Fragrance', fPerfV:'0 % (or aloe light)',
-    fPlast:'Plastic in wipe', fBio:'Biodegradable', fBioV:'yes, compostable', fShelf:'Shelf life opened', fShelfV:'8 weeks',
-    factsFoot:'Dermatologically tested. Do not flush.',
+    fPlast:'Plastic in wipe', fBio:'Urinal-safe', fBioV:'yes, breaks down in water', fShelf:'Shelf life opened', fShelfV:'8 weeks',
+    factsFoot:'Dermatologically tested. Flushable.',
     p1t:'Cartridge in, done.', p1p:'Refills just click into the capsule. No fiddling, no leaking.',
     p2t:'Stays moist.', p2p:'The lid seals airtight. Even after weeks on your belt.',
     p3t:'Smells like nothing.', p3p:'Unscented by default. Aloe version if you like.',
@@ -450,14 +498,18 @@ const I18N = {
     q1:'What exactly are the wipes for?', a1:'Intimate care for your penis: after peeing to catch the last drop, before a date, after sports or a long day. They clean gently without drying out.',
     q2:'Can people see it on my belt?', a2:"It's about the size of a lighter case. With your design it looks more like an accessory than a hygiene product.",
     q3:'Can I pause my subscription?', a3:'Yes. Pause, change the rhythm or cancel anytime in your account, no minimum term.',
-    q4:'Where do used wipes go?', a4:"In the regular bin or compost. Never in the toilet, even though they're biodegradable. They clog pipes.",
+    q4:'Can the wipe really go in the urinal?', a4:"Yes, that's the whole point of Pocket Banana. The wipes are made of short plant fibers with no plastic and break down in water like toilet paper. Urinal or toilet, flush, done.",
     q5:'How fast is shipping?', a5:'Within Switzerland in 1–3 business days, in discreet packaging without print. Free shipping from CHF 30.',
     footBig:'Stay fresh,<br>bestie.', footDraft:'Draft · prices are placeholders',
-    ticker:['Fresh down there','No cap','Clip it','Wipe it','Stay fresh','pH 5.5','Your belt, your style','Pause anytime'],
+    ticker:['Fresh down there','No cap','Wipe & shoot','Straight into the urinal','Stay fresh','pH 5.5','Your belt, your style','Pause anytime'],
     emptyT:'Still empty.', emptyP:'Design your Banana or grab a subscription.', remove:'Remove',
     shipFree:'Free shipping unlocked.', shipLeft:x=>`${x} more for free shipping.`, shipInfo:'Free shipping from CHF 30.',
     added:n=>`${n} added to bag`, coDraft:'Checkout is not connected in this draft yet', coEmpty:'Add something to your bag first',
     subName:n=>`Sub: ${n}`, subMeta:(n,w)=>`${n} wipes · every ${w} weeks`, refillName:'Refill cartridge', refillMeta:'20 wipes · one-time',
+    uspEyebrow:'The game changer', uspTitle:'Wipe.<br>Aim.<br><span class="hl">Gone.</span>',
+    uspText:'No bin in sight? Who cares. Shoot your Pocket Banana wipe straight into the urinal. It breaks down in water like toilet paper.',
+    u1:'breaks down in water', u2:'no trash in your pocket', u3:'no hunting for a bin',
+    shootBtn:'Try it: shoot', hits:n=> n===1 ? '1 hit' : `${n} hits`,
     lidWord:'lid', engWord:'Engraving', preview:(s,l)=>`Pocket Banana preview: ${s} with ${l} lid`
   }
 };
@@ -617,6 +669,37 @@ document.getElementById('checkout').addEventListener('click',()=>toast(cart.leng
 let tt;
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2200);}
 
+/* pissoir shoot */
+let hits = 0, flying = false;
+const wipeEl = document.getElementById('wipe'), splashEl = document.getElementById('splash');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function renderScore(){ document.getElementById('score').textContent = t('hits')(hits); }
+function place(x,y,r,sc,op){ wipeEl.setAttribute('transform',`translate(${x} ${y}) rotate(${r}) scale(${sc})`); wipeEl.setAttribute('opacity',op); }
+function shoot(){
+  if(flying) return; flying = true;
+  const x0=56,y0=232,x1=240,y1=180, fly=reduce?1:850, melt=reduce?1:650, t0=performance.now();
+  splashEl.setAttribute('opacity',0);
+  function frame(now){
+    const e = now - t0;
+    if(e < fly){
+      const p = e/fly;
+      place(x0+(x1-x0)*p, y0+(y1-y0)*p - 640*p*(1-p), 720*p, 1, 1);
+    } else if(e < fly+melt){
+      const q = (e-fly)/melt;
+      place(x1, y1+12*q, 720, 1-q*0.9, 1-q);
+      splashEl.setAttribute('opacity', Math.min(1, q*3));
+    } else {
+      hits++; renderScore();
+      place(x0,y0,0,1,1);
+      setTimeout(()=>splashEl.setAttribute('opacity',0), 500);
+      flying = false; return;
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+document.getElementById('shootBtn').addEventListener('click', shoot);
+
 /* language */
 function applyLang(){
   document.documentElement.lang = lang;
@@ -627,7 +710,7 @@ function applyLang(){
   const words = t('ticker');
   document.getElementById('ticker').innerHTML = [...words,...words].map(w=>`<span>${w} ✦</span>`).join('');
   document.getElementById('heroPouch').innerHTML = pouchSVG({shell:'bubblegum',lid:'banana',pattern:'dots',engrave:'FRESH AF'},'hero');
-  renderBuild(); renderPlans(); renderCart();
+  renderBuild(); renderPlans(); renderCart(); renderScore();
 }
 document.getElementById('lang').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
