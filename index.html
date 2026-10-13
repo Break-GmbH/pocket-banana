@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pocket Banana: die Mini-Kapsel für deinen Gurt mit Intimtüchern. Selbst gestalten, Tücher im Abo.">
+<meta name="theme-color" content="#FFD60A">
+<title>Pocket Banana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticker-collage shop. Loud yellow ground, ink outlines, chunky offset shadows, one pink highlight. Deliberately single (light) look. */
+:root{
+  color-scheme: light;
+  --yellow:#FFD60A;
+  --ink:#1A1033;
+  --pink:#FF6FB5;
+  --cream:#FFF8E7;
+  --sky:#7CC8FF;
+  --ink-soft:#3D2F5C;
+  --display:"Bagel Fat One", "Arial Black", Impact, system-ui, sans-serif;
+  --body:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --r:22px;
+  --shadow:6px 6px 0 var(--ink);
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--yellow);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;padding-inline:16px;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin-inline:auto}
+.mono{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-16px;padding:12px 16px;background:var(--yellow);border-bottom:3px solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:1.5rem;text-decoration:none}
+.logo svg{width:38px;height:38px}
+.nav-links{display:flex;gap:18px;margin-left:auto;font-weight:600}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.cart-btn{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--yellow);border:0;border-radius:999px;padding:8px 16px;font-weight:800}
+.cart-count{background:var(--pink);color:var(--ink);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:.85rem;font-variant-numeric:tabular-nums}
+@media (max-width:720px){.nav-links{display:none}.cart-btn{margin-left:auto}}
+
+/* ticker */
+.ticker{margin-inline:-16px;background:var(--ink);color:var(--yellow);overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--ink)}
+.ticker-track{display:inline-flex;gap:28px;padding:10px 0;animation:slide 28s linear infinite;font-family:var(--display);font-size:1.15rem}
+.ticker-track span:nth-child(even){color:var(--pink)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:3px solid var(--ink);border-radius:999px;padding:14px 26px;font-weight:800;font-size:1.05rem;text-decoration:none;background:var(--cream);box-shadow:var(--shadow);transition:transform .12s, box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink)}
+.btn.primary{background:var(--pink)}
+.btn.dark{background:var(--ink);color:var(--yellow)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;padding-block:56px 40px}
+.hero h1{font-size:clamp(3.2rem,9vw,7.4rem)}
+.hl{display:inline-block;background:var(--pink);padding:0 .18em;border:4px solid var(--ink);border-radius:18px;transform:rotate(-3deg);box-shadow:var(--shadow);margin-block:.08em}
+.hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero-copy p{font-size:1.25rem;max-width:34ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.hero-art{position:relative;aspect-ratio:1/1.05;max-width:100%;background:var(--sky);border:4px solid var(--ink);border-radius:40px;box-shadow:10px 10px 0 var(--ink);display:grid;place-items:center;overflow:hidden}
+.hero-art svg{width:78%;height:auto;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(2deg)}}
+.sticker{position:absolute;background:var(--cream);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.9rem;box-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+.s1{top:7%;left:6%;transform:rotate(-8deg)}
+.s2{top:42%;right:4%;transform:rotate(7deg);background:var(--yellow)}
+.s3{bottom:7%;left:9%;transform:rotate(4deg);background:var(--pink)}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-block:36px 24px}}
+
+/* sections */
+section{padding-block:56px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.sec-head p{max-width:40ch;font-size:1.1rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:var(--cream);border:3px solid var(--ink);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:10px}
+.step-n{font-family:var(--display);font-size:3.2rem;line-height:1;color:var(--pink);-webkit-text-stroke:2px var(--ink)}
+.step h3{font-size:1.8rem}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* builder */
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.stage{position:sticky;top:90px;background:var(--ink);border-radius:36px;padding:28px;display:grid;place-items:center;aspect-ratio:1/1.08;max-width:100%;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--pink)}
+.stage svg{width:72%;height:auto}
+.stage .mono{position:absolute;top:18px;left:22px;color:var(--yellow)}
+.stage{position:sticky}
+.controls{display:flex;flex-direction:column;gap:22px;background:var(--cream);border:3px solid var(--ink);border-radius:30px;padding:26px;min-width:0}
+.ctrl{display:flex;flex-direction:column;gap:10px}
+.ctrl-label{display:flex;justify-content:space-between;gap:8px;font-weight:800}
+.ctrl-label .mono{font-weight:500;color:var(--ink-soft)}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);padding:0}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--cream),0 0 0 6px var(--ink);transform:scale(1.05)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2.5px solid var(--ink);background:transparent;border-radius:999px;padding:8px 16px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--yellow)}
+.chip small{font-family:var(--mono);opacity:.75}
+.txt{border:3px solid var(--ink);border-radius:14px;padding:12px 14px;font:inherit;font-weight:600;background:#fff;color:var(--ink);width:100%}
+.sum{border-top:3px dashed var(--ink);padding-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.price{font-family:var(--display);font-size:2.4rem;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--body);font-size:.9rem;font-weight:600;display:block;line-height:1.2}
+@media (max-width:860px){.builder{grid-template-columns:1fr}.stage{position:relative;top:0}}
+
+/* facts label */
+.facts-row{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}
+.label{background:#fff;border:4px solid var(--ink);padding:18px 20px;max-width:420px;font-family:var(--body)}
+.label h3{font-family:var(--body);font-weight:800;font-size:2.2rem;letter-spacing:-.02em;border-bottom:10px solid var(--ink);padding-bottom:6px}
+.label .serv{border-bottom:5px solid var(--ink);padding-block:6px;font-weight:600}
+.label dl{margin:0}
+.label .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1.5px solid var(--ink);padding-block:7px}
+.label dt{font-weight:800}
+.label dd{margin:0;font-variant-numeric:tabular-nums;text-align:right}
+.label .foot{font-size:.8rem;padding-top:8px}
+.pills{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pill-card{background:var(--cream);border:3px solid var(--ink);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:6px}
+.pill-card b{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.05}
+.pill-card:nth-child(2){background:var(--pink)}
+.pill-card:nth-child(3){background:var(--sky)}
+@media (max-width:860px){.facts-row{grid-template-columns:1fr}}
+@media (max-width:480px){.pills{grid-template-columns:1fr}}
+
+/* abo */
+.toggle{display:inline-flex;border:3px solid var(--ink);border-radius:999px;padding:4px;background:var(--cream);gap:4px;flex-wrap:wrap}
+.toggle button{border:0;background:transparent;border-radius:999px;padding:8px 14px;font-weight:700}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--yellow)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px;align-items:stretch}
+.plan{position:relative;background:var(--cream);border:3px solid var(--ink);border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.plan.hot{background:var(--ink);color:var(--cream);box-shadow:10px 10px 0 var(--pink);transform:rotate(-1deg)}
+.plan .tag{position:absolute;top:-16px;right:20px;background:var(--pink);color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:800;font-size:.85rem;transform:rotate(4deg)}
+.plan h3{font-size:2rem}
+.plan .amt{font-family:var(--display);font-size:3rem;line-height:1;font-variant-numeric:tabular-nums}
+.plan .amt span{font-family:var(--body);font-size:1rem;font-weight:600}
+.plan ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px}
+.plan .btn{margin-top:auto}
+.plan.hot .btn{background:var(--yellow);color:var(--ink);box-shadow:6px 6px 0 var(--pink)}
+.oneoff{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;border:3px dashed var(--ink);border-radius:var(--r);padding:18px 22px}
+@media (max-width:900px){.plans{grid-template-columns:1fr}.plan.hot{transform:none}}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:12px;max-width:820px}
+details{background:var(--cream);border:3px solid var(--ink);border-radius:20px;padding:16px 20px}
+summary{font-weight:800;font-size:1.15rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.5rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding-top:10px;max-width:65ch}
+
+/* footer */
+footer{margin-inline:-16px;padding:48px 16px 40px;background:var(--ink);color:var(--cream);margin-top:40px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
+footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:var(--yellow);line-height:.9}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(26,16,51,.45);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--cream);border-left:4px solid var(--ink);z-index:50;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));gap:16px;transform:translateX(105%);transition:transform .25s ease}
+.drawer.open{transform:none}
+.drawer-head{display:flex;justify-content:space-between;align-items:center}
+.drawer-head h2{font-size:2rem}
+.x{border:3px solid var(--ink);background:var(--yellow);border-radius:50%;width:40px;height:40px;font-weight:800}
+.items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 12px;border:2.5px solid var(--ink);border-radius:16px;padding:12px 14px;background:#fff}
+.item .meta{font-size:.85rem;color:var(--ink-soft);grid-column:1}
+.item .p{font-weight:800;font-variant-numeric:tabular-nums;text-align:right}
+.item .rm{grid-column:2;border:0;background:none;text-decoration:underline;font-size:.85rem;justify-self:end;padding:0}
+.empty{text-align:center;padding:40px 10px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;border-top:3px solid var(--ink);padding-top:12px;font-variant-numeric:tabular-nums}
+.note{font-size:.85rem;color:var(--ink-soft)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);background:var(--ink);color:var(--yellow);padding:12px 20px;border-radius:999px;font-weight:800;z-index:60;transition:transform .25s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  .ticker-track,.hero-art svg{animation:none}
+  .drawer,.toast,.btn{transition:none}
+  html{scroll-behavior:auto}
+}
+/* language switch */
+.lang{display:inline-flex;border:2.5px solid var(--ink);border-radius:999px;padding:3px;gap:2px;background:var(--cream)}
+.lang button{border:0;background:transparent;border-radius:999px;padding:4px 10px;font-family:var(--mono);font-weight:500;font-size:.8rem}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--yellow)}
+@media (max-width:720px){.lang{margin-left:auto}.cart-btn{margin-left:0}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Pocket Banana">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#1A1033"/><path d="M9 15c3 13 17 16 23 3-5 6-15 5-19-4z" fill="#FFD60A" stroke="#FFD60A" stroke-width="2" stroke-linejoin="round"/><path d="M30 17l3-4" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/></svg>
+      Pocket Banana
+    </a>
+    <nav class="nav-links" data-i18n-aria="navLabel">
+      <a href="#how" data-i18n="navHow"></a>
+      <a href="#build" data-i18n="navBuild"></a>
+      <a href="#tuecher" data-i18n="navWipes"></a>
+      <a href="#abo" data-i18n="navSub"></a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="lang" id="lang" role="group" aria-label="Sprache / Language">
+      <button type="button" data-l="de">DE</button>
+      <button type="button" data-l="en">EN</button>
+    </div>
+    <button class="cart-btn" id="cartOpen" data-i18n-aria="cartOpen"><span data-i18n="cart"></span> <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="mono" data-i18n="heroEyebrow"></span>
+      <h1 data-i18n="heroTitle"></h1>
+      <p data-i18n="heroText"></p>
+      <div class="cta-row">
+        <a class="btn primary" href="#build" data-i18n="heroCta1"></a>
+        <a class="btn" href="#abo" data-i18n="heroCta2"></a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <span class="sticker s1" data-i18n="st1"></span>
+      <span class="sticker s2" data-i18n="st2"></span>
+      <span class="sticker s3" data-i18n="st3"></span>
+      <div id="heroPouch" style="display:contents"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <h2 data-i18n="howTitle"></h2>
+      <p data-i18n="howText"></p>
+    </div>
+    <div class="steps">
+      <article class="step"><span class="step-n">1</span><h3 data-i18n="s1t"></h3><p data-i18n="s1p"></p></article>
+      <article class="step"><span class="step-n">2</span><h3 data-i18n="s2t"></h3><p data-i18n="s2p"></p></article>
+      <article class="step"><span class="step-n">3</span><h3>Fresh</h3><p data-i18n="s3p"></p></article>
+    </div>
+  </section>
+
+  <section id="build">
+    <div class="sec-head">
+      <h2 data-i18n="buildTitle"></h2>
+      <p data-i18n="buildText"></p>
+    </div>
+    <div class="builder">
+      <div class="stage">
+        <span class="mono" id="stageName"></span>
+        <div id="buildPouch" style="display:contents"></div>
+      </div>
+      <form class="controls" id="builderForm">
+        <div class="ctrl">
+          <div class="ctrl-label"><span data-i18n="shellLbl"></span> <span class="mono" id="shellName"></span></div>
+          <div class="swatches" id="shellSw" role="group" data-i18n-aria="shellLbl"></div>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span data-i18n="lidLbl"></span> <span class="mono" id="lidName"></span></div>
+          <div class="swatches" id="lidSw" role="group" data-i18n-aria="lidLbl"></div>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label" data-i18n="patLbl"></div>
+          <div class="chips" id="patChips" role="group" data-i18n-aria="patLbl"></div>
+        </div>
+        <div class="ctrl">
+          <label class="ctrl-label" for="engrave"><span data-i18n="engLbl"></span> <span class="mono" data-i18n="engHint"></span></label>
+          <input class="txt" id="engrave" maxlength="12" autocomplete="off">
+        </div>
+        <div class="sum">
+          <div class="price" id="buildPrice"></div>
+          <button class="btn primary" type="submit" data-i18n="addCart"></button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="tuecher">
+    <div class="sec-head">
+      <h2 data-i18n="wipesTitle"></h2>
+      <p data-i18n="wipesText"></p>
+    </div>
+    <div class="facts-row">
+      <div class="label">
+        <h3 data-i18n="factsTitle"></h3>
+        <div class="serv" data-i18n="factsServ"></div>
+        <dl>
+          <div class="row"><dt data-i18n="fFormat"></dt><dd>15 × 20 cm</dd></div>
+          <div class="row"><dt data-i18n="fMat"></dt><dd data-i18n="fMatV"></dd></div>
+          <div class="row"><dt data-i18n="fPh"></dt><dd>5.5</dd></div>
+          <div class="row"><dt data-i18n="fAlc"></dt><dd>0 %</dd></div>
+          <div class="row"><dt data-i18n="fPerf"></dt><dd data-i18n="fPerfV"></dd></div>
+          <div class="row"><dt data-i18n="fPlast"></dt><dd>0 g</dd></div>
+          <div class="row"><dt data-i18n="fBio"></dt><dd data-i18n="fBioV"></dd></div>
+          <div class="row"><dt data-i18n="fShelf"></dt><dd data-i18n="fShelfV"></dd></div>
+        </dl>
+        <p class="foot" data-i18n="factsFoot"></p>
+      </div>
+      <div class="pills">
+        <div class="pill-card"><b data-i18n="p1t"></b><p data-i18n="p1p"></p></div>
+        <div class="pill-card"><b data-i18n="p2t"></b><p data-i18n="p2p"></p></div>
+        <div class="pill-card"><b data-i18n="p3t"></b><p data-i18n="p3p"></p></div>
+        <div class="pill-card"><b data-i18n="p4t"></b><p data-i18n="p4p"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="abo">
+    <div class="sec-head">
+      <h2 data-i18n="subTitle"></h2>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p data-i18n="subText"></p>
+        <div class="toggle" id="freq" role="group" data-i18n-aria="freqLbl">
+          <button type="button" data-w="2"></button>
+          <button type="button" data-w="4" aria-pressed="true"></button>
+          <button type="button" data-w="8"></button>
+        </div>
+      </div>
+    </div>
+    <div class="plans" id="plans"></div>
+    <div class="oneoff">
+      <div data-i18n="oneoffText"></div>
+      <button class="btn" type="button" id="oneoffBtn" data-i18n="oneoffBtn"></button>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-head"><h2 data-i18n="faqTitle"></h2></div>
+    <div class="faq">
+      <details open><summary data-i18n="q1"></summary><p data-i18n="a1"></p></details>
+      <details><summary data-i18n="q2"></summary><p data-i18n="a2"></p></details>
+      <details><summary data-i18n="q3"></summary><p data-i18n="a3"></p></details>
+      <details><summary data-i18n="q4"></summary><p data-i18n="a4"></p></details>
+      <details><summary data-i18n="q5"></summary><p data-i18n="a5"></p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big" data-i18n="footBig"></div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="mono">© 2026 Pocket Banana</span>
+      <span class="mono" data-i18n="footDraft"></span>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" data-i18n-aria="cart" aria-hidden="true">
+  <div class="drawer-head"><h2 data-i18n="cartTitle"></h2><button class="x" id="cartClose" data-i18n-aria="cartClose">✕</button></div>
+  <div class="items" id="items"></div>
+  <div class="total"><span>Total</span><span id="total">CHF 0.00</span></div>
+  <p class="note" id="shipNote"></p>
+  <button class="btn primary" id="checkout" type="button" data-i18n="checkout"></button>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const I18N = {
+  de:{
+    navLabel:'Hauptnavigation', navHow:"So geht's", navBuild:'Gestalten', navWipes:'Tücher', navSub:'Abo',
+    cart:'Korb', cartOpen:'Warenkorb öffnen', cartClose:'Warenkorb schliessen', cartTitle:'Dein Korb', checkout:'Zur Kasse',
+    heroEyebrow:'Hygiene to go · am Gurt',
+    heroTitle:'Frisch <span class="hl">untenrum.</span> Überall.',
+    heroText:'Pocket Banana ist die Mini-Kapsel für deinen Gurt, gefüllt mit Intimtüchern für dein bestes Stück. Nach dem Pinkeln, vor dem Date, nach dem Gym. Ziehen, wischen, fresh.',
+    heroCta1:'Deine Banana gestalten', heroCta2:'Tücher-Abo checken',
+    st1:'pH 5.5 · hautneutral', st2:'passt an jeden Gurt', st3:'0 % Alkohol',
+    howTitle:'3 Sekunden.<br>Kein Drama.', howText:'Keine nassen Flecken auf der Hose, kein Klopapier, das zerfällt. Einfach ein Tuch, das dafür gemacht ist.',
+    s1t:'Clippen', s1p:'Pocket Banana an Gurt oder Hosenbund clippen. Hält bombenfest, fällt nicht auf.',
+    s2t:'Ziehen', s2p:'Deckel auf, ein Tuch kommt raus. Das nächste wartet schon, frisch und feucht verschlossen.',
+    s3p:'Kurz wischen, Tuch in den Müll. Nie ins WC, versprochen? Fertig, weiter mit deinem Tag.',
+    buildTitle:'Mach sie zu deiner.', buildText:'Farbe, Deckel, Muster und deine Gravur. Die Vorschau zeigt live, was du bekommst.',
+    stageDefault:'Deine Banana', shellLbl:'Kapsel-Farbe', lidLbl:'Deckel', patLbl:'Muster',
+    engLbl:'Gravur', engHint:'max. 12 Zeichen · + CHF 5.00', engPh:'z. B. BIG BANANA',
+    priceSub:'inkl. erstem 20er-Refill', addCart:'In den Korb',
+    wipesTitle:'Was drin ist,<br>zählt.', wipesText:'Die Tücher sind für die empfindlichste Haut gemacht, die du hast. Ohne Zeug, das brennt.',
+    factsTitle:'Tuch-Fakten', factsServ:'1 Refill-Kartusche · 20 Tücher',
+    fFormat:'Format', fMat:'Material', fMatV:'100 % Bambus-Viskose', fPh:'pH-Wert', fAlc:'Alkohol', fPerf:'Parfum', fPerfV:'0 % (oder Aloe light)',
+    fPlast:'Plastik im Tuch', fBio:'Abbaubar', fBioV:'ja, kompostierbar', fShelf:'Haltbarkeit offen', fShelfV:'8 Wochen',
+    factsFoot:'Dermatologisch getestet. Nicht in die Toilette werfen.',
+    p1t:'Kartusche rein, fertig.', p1p:'Refills klicken einfach in die Kapsel. Kein Fummeln, kein Auslaufen.',
+    p2t:'Bleibt feucht.', p2p:'Der Deckel schliesst luftdicht. Auch nach Wochen am Gurt.',
+    p3t:'Riecht nach nix.', p3p:'Standard ist unparfümiert. Wer mag, nimmt die Aloe-Variante.',
+    p4t:'Diskret.', p4p:'Sieht aus wie ein Gadget, nicht wie Hygiene-Kram. Niemand fragt.',
+    subTitle:'Nie wieder leer.', subText:'Wähl deine Menge und wie oft du Nachschub willst. Pausieren oder kündigen geht jederzeit mit einem Klick.',
+    freqLbl:'Lieferrhythmus', every:w=>`alle ${w} Wochen`,
+    perDelivery:' CHF / Lieferung', perWipe:'pro Tuch', hot:'Most picked', startSub:'Abo starten',
+    plans:{solo:['20 Tücher pro Lieferung','Für ab und zu','Versand inklusive'],daily:['40 Tücher pro Lieferung','Für jeden Tag','Gratis Deckel-Swap alle 6 Monate'],bunch:['80 Tücher pro Lieferung','Für dich und die WG','Exklusive Drop-Farben zuerst']},
+    oneoffText:'<b>Kein Abo-Typ?</b> Einzelne 20er-Refill-Kartusche für CHF 9.90.', oneoffBtn:'Refill in den Korb',
+    faqTitle:'Fragen? Klar.',
+    q1:'Wofür genau sind die Tücher?', a1:'Für die Intimpflege am Penis: nach dem Pinkeln gegen den letzten Tropfen, vor dem Date, nach Sport oder einem langen Tag. Sie reinigen sanft, ohne auszutrocknen.',
+    q2:'Sieht man die Kapsel am Gurt?', a2:'Sie ist ungefähr so gross wie ein Feuerzeug-Etui. Mit deinem Design sieht sie eher nach Accessoire aus als nach Hygieneprodukt.',
+    q3:'Kann ich das Abo pausieren?', a3:'Ja. Pausieren, Rhythmus ändern oder kündigen geht jederzeit in deinem Konto, ohne Mindestlaufzeit.',
+    q4:'Wohin mit benutzten Tüchern?', a4:'In den normalen Abfall oder Kompost. Bitte nie in die Toilette, auch wenn sie abbaubar sind. Das verstopft Leitungen.',
+    q5:'Wie schnell ist der Versand?', a5:'Innerhalb der Schweiz in 1–3 Werktagen, diskret verpackt ohne Aufdruck. Ab CHF 30 ist der Versand gratis.',
+    footBig:'Stay fresh,<br>bestie.', footDraft:'Entwurf · Preise sind Platzhalter',
+    ticker:['Frisch untenrum','No cap','Clip it','Wipe it','Stay fresh','pH 5.5','Dein Gurt, dein Style','Abo jederzeit pausieren'],
+    emptyT:'Noch leer.', emptyP:'Gestalte deine Banana oder schnapp dir ein Abo.', remove:'Entfernen',
+    shipFree:'Gratis Versand ist dabei.', shipLeft:x=>`Noch ${x} bis zum Gratisversand.`, shipInfo:'Gratis Versand ab CHF 30.',
+    added:n=>`${n} ist im Korb`, coDraft:'Checkout ist im Entwurf noch nicht angebunden', coEmpty:'Leg zuerst etwas in den Korb',
+    subName:n=>`Abo: ${n}`, subMeta:(n,w)=>`${n} Tücher · alle ${w} Wochen`, refillName:'Refill-Kartusche', refillMeta:'20 Tücher · einmalig',
+    lidWord:'Deckel', engWord:'Gravur', preview:(s,l)=>`Pocket Banana Vorschau: ${s} mit ${l}-Deckel`
+  },
+  en:{
+    navLabel:'Main navigation', navHow:'How it works', navBuild:'Design', navWipes:'Wipes', navSub:'Subscribe',
+    cart:'Bag', cartOpen:'Open bag', cartClose:'Close bag', cartTitle:'Your bag', checkout:'Checkout',
+    heroEyebrow:'Hygiene to go · on your belt',
+    heroTitle:'Fresh <span class="hl">down there.</span> Anywhere.',
+    heroText:'Pocket Banana is the mini capsule for your belt, filled with intimate wipes for your best friend. After peeing, before the date, after the gym. Pull, wipe, fresh.',
+    heroCta1:'Design your Banana', heroCta2:'Check the wipe sub',
+    st1:'pH 5.5 · skin-neutral', st2:'fits any belt', st3:'0 % alcohol',
+    howTitle:'3 seconds.<br>Zero drama.', howText:'No wet spots on your pants, no toilet paper falling apart. Just a wipe made for the job.',
+    s1t:'Clip', s1p:'Clip Pocket Banana to your belt or waistband. Holds tight, stays low-key.',
+    s2t:'Pull', s2p:'Pop the lid, one wipe comes out. The next one is already waiting, sealed and moist.',
+    s3p:'Quick wipe, toss it in the bin. Never down the toilet, promise? Done, back to your day.',
+    buildTitle:'Make it yours.', buildText:'Color, lid, pattern and your engraving. The preview shows exactly what you get.',
+    stageDefault:'Your Banana', shellLbl:'Capsule color', lidLbl:'Lid', patLbl:'Pattern',
+    engLbl:'Engraving', engHint:'max. 12 characters · + CHF 5.00', engPh:'e.g. BIG BANANA',
+    priceSub:'incl. first 20-pack refill', addCart:'Add to bag',
+    wipesTitle:"What's inside<br>matters.", wipesText:'These wipes are made for the most sensitive skin you have. Nothing that burns.',
+    factsTitle:'Wipe Facts', factsServ:'1 refill cartridge · 20 wipes',
+    fFormat:'Size', fMat:'Material', fMatV:'100 % bamboo viscose', fPh:'pH value', fAlc:'Alcohol', fPerf:'Fragrance', fPerfV:'0 % (or aloe light)',
+    fPlast:'Plastic in wipe', fBio:'Biodegradable', fBioV:'yes, compostable', fShelf:'Shelf life opened', fShelfV:'8 weeks',
+    factsFoot:'Dermatologically tested. Do not flush.',
+    p1t:'Cartridge in, done.', p1p:'Refills just click into the capsule. No fiddling, no leaking.',
+    p2t:'Stays moist.', p2p:'The lid seals airtight. Even after weeks on your belt.',
+    p3t:'Smells like nothing.', p3p:'Unscented by default. Aloe version if you like.',
+    p4t:'Low-key.', p4p:'Looks like a gadget, not like hygiene stuff. Nobody asks.',
+    subTitle:'Never run out.', subText:'Pick your amount and how often you want a refill. Pause or cancel anytime in one click.',
+    freqLbl:'Delivery rhythm', every:w=>`every ${w} weeks`,
+    perDelivery:' CHF / delivery', perWipe:'per wipe', hot:'Most picked', startSub:'Start subscription',
+    plans:{solo:['20 wipes per delivery','For now and then','Shipping included'],daily:['40 wipes per delivery','For every day','Free lid swap every 6 months'],bunch:['80 wipes per delivery','For you and your flatmates','First dibs on drop colors']},
+    oneoffText:'<b>Not a sub person?</b> Single 20-pack refill cartridge for CHF 9.90.', oneoffBtn:'Add refill to bag',
+    faqTitle:'Questions? Sure.',
+    q1:'What exactly are the wipes for?', a1:'Intimate care for your penis: after peeing to catch the last drop, before a date, after sports or a long day. They clean gently without drying out.',
+    q2:'Can people see it on my belt?', a2:"It's about the size of a lighter case. With your design it looks more like an accessory than a hygiene product.",
+    q3:'Can I pause my subscription?', a3:'Yes. Pause, change the rhythm or cancel anytime in your account, no minimum term.',
+    q4:'Where do used wipes go?', a4:"In the regular bin or compost. Never in the toilet, even though they're biodegradable. They clog pipes.",
+    q5:'How fast is shipping?', a5:'Within Switzerland in 1–3 business days, in discreet packaging without print. Free shipping from CHF 30.',
+    footBig:'Stay fresh,<br>bestie.', footDraft:'Draft · prices are placeholders',
+    ticker:['Fresh down there','No cap','Clip it','Wipe it','Stay fresh','pH 5.5','Your belt, your style','Pause anytime'],
+    emptyT:'Still empty.', emptyP:'Design your Banana or grab a subscription.', remove:'Remove',
+    shipFree:'Free shipping unlocked.', shipLeft:x=>`${x} more for free shipping.`, shipInfo:'Free shipping from CHF 30.',
+    added:n=>`${n} added to bag`, coDraft:'Checkout is not connected in this draft yet', coEmpty:'Add something to your bag first',
+    subName:n=>`Sub: ${n}`, subMeta:(n,w)=>`${n} wipes · every ${w} weeks`, refillName:'Refill cartridge', refillMeta:'20 wipes · one-time',
+    lidWord:'lid', engWord:'Engraving', preview:(s,l)=>`Pocket Banana preview: ${s} with ${l} lid`
+  }
+};
+let lang = 'de';
+try{ const s = localStorage.getItem('pb-lang'); if(s==='de'||s==='en') lang = s; }catch(e){}
+const t = k => I18N[lang][k];
+
+const COLORS = {
+  banana:{hex:'#FFD60A',name:'Banana'},
+  bubblegum:{hex:'#FF6FB5',name:'Bubblegum'},
+  matcha:{hex:'#8FD16A',name:'Matcha'},
+  sky:{hex:'#7CC8FF',name:'Sky'},
+  lava:{hex:'#FF5A36',name:'Lava'},
+  chrome:{hex:'#C9CED6',name:'Chrome'},
+  midnight:{hex:'#2A1846',name:'Midnight'},
+  cloud:{hex:'#FFF8E7',name:'Cloud'}
+};
+const PATTERNS = {none:'Clean',dots:'Dots',stripes:'Stripes',checker:'Checker',flames:'Flames'};
+const BASE = 24.90, ENGRAVE = 5;
+const INK = '#1A1033';
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function chf(n){return 'CHF ' + n.toFixed(2);}
+
+function pouchSVG(cfg, id){
+  const shell = COLORS[cfg.shell].hex, lid = COLORS[cfg.lid].hex;
+  const dark = cfg.shell === 'midnight';
+  const pc = dark ? '#FFF8E7' : INK;
+  const pats = {
+    dots:`<pattern id="${id}-p" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="3.5" fill="${pc}"/></pattern>`,
+    stripes:`<pattern id="${id}-p" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="9" height="22" fill="${pc}"/></pattern>`,
+    checker:`<pattern id="${id}-p" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="15" height="15" fill="${pc}"/><rect x="15" y="15" width="15" height="15" fill="${pc}"/></pattern>`,
+    flames:`<pattern id="${id}-p" width="46" height="60" patternUnits="userSpaceOnUse"><path d="M23 58c-12 0-17-9-13-19 2 6 6 8 8 6-4-10 2-20 9-26-1 9 5 12 7 19 2-3 2-6 1-9 6 6 8 13 5 20-3 6-9 9-17 9z" fill="${pc}"/></pattern>`
+  };
+  const pat = cfg.pattern !== 'none' ? pats[cfg.pattern] : '';
+  const overlay = pat ? `<rect x="80" y="100" width="140" height="220" rx="62" fill="url(#${id}-p)" opacity="${dark?0.35:0.22}"/>` : '';
+  const text = (cfg.engrave||'').trim();
+  const fs = text.length > 9 ? 17 : text.length > 6 ? 21 : 26;
+  return `<svg viewBox="0 0 300 360" role="img" aria-label="${esc(t('preview')(COLORS[cfg.shell].name, COLORS[cfg.lid].name))}">
+    <defs>${pat}</defs>
+    <rect x="-10" y="160" width="320" height="56" fill="${INK}"/>
+    <line x1="-10" y1="170" x2="310" y2="170" stroke="#FFF8E7" stroke-width="2" stroke-dasharray="7 6" opacity=".5"/>
+    <line x1="-10" y1="206" x2="310" y2="206" stroke="#FFF8E7" stroke-width="2" stroke-dasharray="7 6" opacity=".5"/>
+    <path d="M132 76 C 118 44, 150 30, 140 6 C 166 22, 190 30, 170 76 Z" fill="#FFFFFF" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M146 64 C 150 46, 160 38, 158 24" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+    <rect x="80" y="100" width="140" height="220" rx="62" fill="${shell}" stroke="${INK}" stroke-width="5"/>
+    ${overlay}
+    <rect x="80" y="100" width="140" height="220" rx="62" fill="none" stroke="${INK}" stroke-width="5"/>
+    <path d="M102 140 C 100 190, 100 240, 112 286" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+    <rect x="76" y="70" width="148" height="56" rx="26" fill="${lid}" stroke="${INK}" stroke-width="5"/>
+    <rect x="124" y="70" width="52" height="10" rx="5" fill="${INK}"/>
+    ${text ? `<text x="150" y="222" text-anchor="middle" font-family="Bagel Fat One, Arial Black, sans-serif" font-size="${fs}" fill="${dark ? '#FFF8E7' : INK}">${esc(text)}</text>` : ''}
+    <g transform="translate(150 274)"><circle r="22" fill="${INK}"/><path d="M-12-5c3 13 17 16 23 3-5 6-15 5-19-4z" fill="#FFD60A" stroke="#FFD60A" stroke-width="2" stroke-linejoin="round"/></g>
+  </svg>`;
+}
+
+/* builder */
+const cfg = {shell:'banana',lid:'midnight',pattern:'none',engrave:''};
+function swatchGroup(el, key){
+  el.innerHTML = Object.entries(COLORS).map(([k,v])=>`<button type="button" class="sw" data-k="${k}" style="background:${v.hex}" aria-label="${v.name}" aria-pressed="${cfg[key]===k}"></button>`).join('');
+  el.addEventListener('click',e=>{const b=e.target.closest('.sw'); if(!b) return; cfg[key]=b.dataset.k; renderBuild();});
+}
+swatchGroup(document.getElementById('shellSw'),'shell');
+swatchGroup(document.getElementById('lidSw'),'lid');
+const patEl = document.getElementById('patChips');
+patEl.innerHTML = Object.entries(PATTERNS).map(([k,v])=>`<button type="button" class="chip" data-k="${k}" aria-pressed="${cfg.pattern===k}">${v}</button>`).join('');
+patEl.addEventListener('click',e=>{const b=e.target.closest('.chip'); if(!b) return; cfg.pattern=b.dataset.k; renderBuild();});
+const engrave = document.getElementById('engrave');
+engrave.addEventListener('input',()=>{cfg.engrave = engrave.value.toUpperCase(); renderBuild();});
+
+function buildPrice(){return BASE + (cfg.engrave.trim()?ENGRAVE:0);}
+function renderBuild(){
+  document.getElementById('buildPouch').innerHTML = pouchSVG(cfg,'b');
+  document.querySelectorAll('#shellSw .sw').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===cfg.shell));
+  document.querySelectorAll('#lidSw .sw').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===cfg.lid));
+  document.querySelectorAll('#patChips .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===cfg.pattern));
+  document.getElementById('shellName').textContent = COLORS[cfg.shell].name;
+  document.getElementById('lidName').textContent = COLORS[cfg.lid].name;
+  document.getElementById('stageName').textContent = cfg.engrave.trim() ? `“${cfg.engrave.trim()}”` : t('stageDefault');
+  document.getElementById('buildPrice').innerHTML = `${chf(buildPrice())}<small>${t('priceSub')}</small>`;
+}
+
+/* abo */
+const PLANS = [
+  {id:'solo',name:'Solo Banana',n:20,price:8.90},
+  {id:'daily',name:'Daily Driver',n:40,price:14.90,hot:true},
+  {id:'bunch',name:'Big Bunch',n:80,price:26.90}
+];
+let weeks = 4;
+function renderPlans(){
+  document.querySelectorAll('#freq button').forEach(b=>b.textContent = t('every')(b.dataset.w));
+  document.getElementById('plans').innerHTML = PLANS.map(p=>`
+    <article class="plan${p.hot?' hot':''}">
+      ${p.hot?`<span class="tag">${t('hot')}</span>`:''}
+      <h3>${p.name}</h3>
+      <div class="amt">${p.price.toFixed(2)}<span>${t('perDelivery')}</span></div>
+      <span class="mono">${t('every')(weeks)} · ${(p.price/p.n).toFixed(2)} ${t('perWipe')}</span>
+      <ul>${t('plans')[p.id].map(x=>`<li>${x}</li>`).join('')}</ul>
+      <button class="btn${p.hot?'':' dark'}" type="button" data-plan="${p.id}">${t('startSub')}</button>
+    </article>`).join('');
+}
+document.getElementById('freq').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  weeks = +b.dataset.w;
+  document.querySelectorAll('#freq button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  renderPlans();
+});
+document.getElementById('plans').addEventListener('click',e=>{
+  const b=e.target.closest('[data-plan]'); if(!b) return;
+  const p=PLANS.find(x=>x.id===b.dataset.plan);
+  addItem({kind:'sub',plan:p.id,n:p.n,weeks,price:p.price});
+});
+document.getElementById('oneoffBtn').addEventListener('click',()=>addItem({kind:'refill',price:9.90}));
+
+/* cart: items stored as data, labels rendered in the current language */
+let cart = [];
+try{ cart = (JSON.parse(localStorage.getItem('pb-cart2')||'[]') || []).filter(i=>i && i.kind); }catch(e){ cart = []; }
+function save(){ try{ localStorage.setItem('pb-cart2',JSON.stringify(cart)); }catch(e){} }
+function label(it){
+  if(it.kind==='sub'){ const p=PLANS.find(x=>x.id===it.plan); return {name:t('subName')(p.name), meta:t('subMeta')(it.n,it.weeks)}; }
+  if(it.kind==='refill') return {name:t('refillName'), meta:t('refillMeta')};
+  const parts=[COLORS[it.shell].name, `${COLORS[it.lid].name}-${t('lidWord')}`, PATTERNS[it.pattern]];
+  if(it.engrave) parts.push(`${t('engWord')} “${it.engrave}”`);
+  return {name:'Pocket Banana', meta:parts.join(' · ')};
+}
+function addItem(it){ cart.push(it); save(); renderCart(); toast(t('added')(label(it).name)); }
+function renderCart(){
+  document.getElementById('cartCount').textContent = cart.length;
+  const box = document.getElementById('items');
+  if(!cart.length){
+    box.innerHTML = `<div class="empty"><b style="font-family:var(--display);font-size:1.6rem;font-weight:400">${t('emptyT')}</b><p>${t('emptyP')}</p></div>`;
+  } else {
+    box.innerHTML = cart.map((it,i)=>{const l=label(it); return `<div class="item"><b>${esc(l.name)}</b><span class="p">${chf(it.price)}</span><span class="meta">${esc(l.meta)}</span><button class="rm" type="button" data-i="${i}">${t('remove')}</button></div>`;}).join('');
+  }
+  const sum = cart.reduce((a,b)=>a+b.price,0);
+  document.getElementById('total').textContent = chf(sum);
+  document.getElementById('shipNote').textContent = sum>=30 ? t('shipFree') : sum>0 ? t('shipLeft')(chf(30-sum)) : t('shipInfo');
+}
+document.getElementById('items').addEventListener('click',e=>{
+  const b=e.target.closest('.rm'); if(!b) return; cart.splice(+b.dataset.i,1); save(); renderCart();
+});
+
+document.getElementById('builderForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  addItem({kind:'pouch',shell:cfg.shell,lid:cfg.lid,pattern:cfg.pattern,engrave:cfg.engrave.trim(),price:buildPrice()});
+});
+
+const drawer=document.getElementById('drawer'), scrim=document.getElementById('scrim');
+function openCart(){drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');scrim.hidden=false;document.getElementById('cartClose').focus();}
+function closeCart(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');scrim.hidden=true;}
+document.getElementById('cartOpen').addEventListener('click',openCart);
+document.getElementById('cartClose').addEventListener('click',closeCart);
+scrim.addEventListener('click',closeCart);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
+document.getElementById('checkout').addEventListener('click',()=>toast(cart.length?t('coDraft'):t('coEmpty')));
+
+let tt;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2200);}
+
+/* language */
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.innerHTML = t(el.dataset.i18n);});
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label', t(el.dataset.i18nAria)));
+  document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.l===lang));
+  engrave.placeholder = t('engPh');
+  const words = t('ticker');
+  document.getElementById('ticker').innerHTML = [...words,...words].map(w=>`<span>${w} ✦</span>`).join('');
+  document.getElementById('heroPouch').innerHTML = pouchSVG({shell:'bubblegum',lid:'banana',pattern:'dots',engrave:'FRESH AF'},'hero');
+  renderBuild(); renderPlans(); renderCart();
+}
+document.getElementById('lang').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  lang = b.dataset.l;
+  try{ localStorage.setItem('pb-lang',lang); }catch(err){}
+  applyLang();
+});
+applyLang();
+</script>
+</body>
+</html>
