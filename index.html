@@ -59,7 +59,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:3px solid var(--ink);border-radius:999px;padding:14px 26px;font-weight:800;font-size:1.05rem;text-decoration:none;background:var(--cream);box-shadow:var(--shadow);transition:transform .12s, box-shadow .12s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:14px 26px;font-weight:800;font-size:1.05rem;text-decoration:none;background:var(--cream);box-shadow:var(--shadow);transition:transform .12s, box-shadow .12s}
 .btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
 .btn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink)}
 .btn.primary{background:var(--pink)}
@@ -137,7 +137,7 @@ section{padding-block:56px}
 
 /* abo */
 .toggle{display:inline-flex;border:3px solid var(--ink);border-radius:999px;padding:4px;background:var(--cream);gap:4px;flex-wrap:wrap}
-.toggle button{border:0;background:transparent;border-radius:999px;padding:8px 14px;font-weight:700}
+.toggle button{border:0;background:transparent;color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:700}
 .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--yellow)}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px;align-items:stretch}
 .plan{position:relative;background:var(--cream);border:3px solid var(--ink);border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:14px}
@@ -250,6 +250,7 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
 .sub-card .btn.sm{box-shadow:4px 4px 0 var(--pink);border-color:var(--cream)}
 .sub-card .btn.ghost{background:transparent;color:var(--cream)}
 .sub-card .toggle{border-radius:20px;align-self:flex-start}
+.sub-card .toggle button{padding:7px 12px;font-size:.92rem}
 .confirm{border:2px dashed var(--yellow);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px}
 .meter{height:20px;border:3px solid var(--ink);border-radius:999px;overflow:hidden;background:#fff}
 .meter span{display:block;height:100%;background:var(--pink)}
@@ -624,7 +625,7 @@ const I18N = {
     accHi:n=>`Hey ${n}.`, accSub:'Dein Abo, deine Bestellungen und deine Bananas auf einen Blick.', backShop:'← Zurück zum Shop', logout:'Ausloggen',
     st_active:'Aktiv', st_paused:'Pausiert', st_cancelled:'Gekündigt', st_transit:'Unterwegs', st_delivered:'Zugestellt', st_processing:'In Bearbeitung',
     yourSub:'Dein Abo', nextDel:'Nächste Lieferung', content:'Inhalt', perDel:'Pro Lieferung', rhythm:'Rhythmus', wipesN:n=>`${n} Tücher`,
-    skip:'Nächste überspringen', skipped:d=>`Übersprungen. Nächste Lieferung: ${d}`, pause:'Pausieren', paused:'Abo pausiert.',
+    skip:'Nächste überspringen', skipped:d=>`Übersprungen. Nächste Lieferung: ${d}`, pauseSub:'Pausieren', paused:'Abo pausiert.',
     resume:'Fortsetzen', resumed:d=>`Weiter geht's. Nächste Lieferung: ${d}`, cancel:'Kündigen',
     cancelQ:'Abo wirklich kündigen? Du kannst jederzeit wieder starten.', cancelYes:'Ja, kündigen', cancelNo:'Doch nicht',
     cancelledMsg:'Abo gekündigt.', cancelledText:'Dein Abo ist gekündigt. Es kommen keine Lieferungen mehr.', restart:'Abo neu starten', rhythmSet:w=>`Rhythmus: alle ${w} Wochen.`,
@@ -691,7 +692,7 @@ const I18N = {
     accHi:n=>`Hey ${n}.`, accSub:'Your subscription, orders and Bananas at a glance.', backShop:'← Back to shop', logout:'Log out',
     st_active:'Active', st_paused:'Paused', st_cancelled:'Cancelled', st_transit:'In transit', st_delivered:'Delivered', st_processing:'Processing',
     yourSub:'Your subscription', nextDel:'Next delivery', content:'Contents', perDel:'Per delivery', rhythm:'Rhythm', wipesN:n=>`${n} wipes`,
-    skip:'Skip next', skipped:d=>`Skipped. Next delivery: ${d}`, pause:'Pause', paused:'Subscription paused.',
+    skip:'Skip next', skipped:d=>`Skipped. Next delivery: ${d}`, pauseSub:'Pause', paused:'Subscription paused.',
     resume:'Resume', resumed:d=>`Back on. Next delivery: ${d}`, cancel:'Cancel',
     cancelQ:'Really cancel your subscription? You can restart anytime.', cancelYes:'Yes, cancel', cancelNo:'Keep it',
     cancelledMsg:'Subscription cancelled.', cancelledText:'Your subscription is cancelled. No more deliveries.', restart:'Restart subscription', rhythmSet:w=>`Rhythm: every ${w} weeks.`,
@@ -1027,7 +1028,7 @@ function renderSub(){
       h += `<div class="confirm"><p>${t('cancelQ')}</p><div class="sub-actions"><button class="btn sm primary" type="button" data-act="cancelYes">${t('cancelYes')}</button><button class="btn sm ghost" type="button" data-act="cancelNo">${t('cancelNo')}</button></div></div>`;
     } else {
       h += `<div class="sub-actions">${s.status==='active'
-        ? `<button class="btn sm" type="button" data-act="skip">${t('skip')}</button><button class="btn sm" type="button" data-act="pause">${t('pause')}</button>`
+        ? `<button class="btn sm" type="button" data-act="skip">${t('skip')}</button><button class="btn sm" type="button" data-act="pause">${t('pauseSub')}</button>`
         : `<button class="btn sm primary" type="button" data-act="resume">${t('resume')}</button>`}
         <button class="btn sm ghost" type="button" data-act="cancel">${t('cancel')}</button></div>`;
     }
