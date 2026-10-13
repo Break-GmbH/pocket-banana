@@ -7,4 +7,4 @@ Landingpage und Shop-Entwurf für Pocket Banana: eine Mini-Kapsel für den Gurt 
 - Konfigurator (Farbe, Deckel, Muster, Gravur), Abo-Auswahl, Warenkorb (Demo, keine Kasse angebunden)
 - Preise sind Platzhalter
 
-Live: https://filipe2605.github.io/pocket-banana/
+Live: https://break-gmbh.github.io/pocket-banana/
