@@ -18,6 +18,8 @@
   --pink:#FF6FB5;
   --cream:#FFF8E7;
   --sky:#7CC8FF;
+  --green:#8FD16A;
+  --red:#C2183A;
   --ink-soft:#3D2F5C;
   --display:"Bagel Fat One", "Arial Black", Impact, system-ui, sans-serif;
   --body:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -213,6 +215,65 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
 .demo-big:hover{transform:translate(-50%,-50%) scale(1.08)}
 @media (max-width:860px){.usp{grid-template-columns:1fr;padding:22px}.demo-big{width:64px;height:64px;font-size:1.5rem}}
 
+/* account button + login modal */
+.acc-btn{display:flex;align-items:center;gap:6px;border:2.5px solid var(--ink);background:var(--cream);border-radius:999px;padding:6px 14px;font-weight:800}
+.acc-btn svg{width:18px;height:18px}
+.modal{position:fixed;inset:0;z-index:70;background:rgba(26,16,51,.55);display:grid;place-items:center;padding:16px}
+.modal-card{position:relative;background:var(--cream);border:4px solid var(--ink);border-radius:28px;box-shadow:10px 10px 0 var(--pink);padding:28px;width:min(420px,100%);display:flex;flex-direction:column;gap:10px}
+.modal-card h2{font-size:2.4rem;padding-right:44px}
+.modal-card .x{position:absolute;top:16px;right:16px}
+.modal-card label{font-weight:800;margin-top:6px}
+.modal-card .btn{margin-top:10px}
+.err{color:var(--red);font-weight:700}
+
+/* account page */
+.acc{padding-block:40px}
+.acc-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px}
+.acc-top h1{font-size:clamp(3rem,9vw,6rem);margin-block:10px 8px}
+.acc-top p{font-size:1.1rem}
+.back{font-weight:700}
+.acc-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+.card{background:var(--cream);border:3px solid var(--ink);border-radius:26px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.card h3{font-size:1.8rem}
+.card.wide{grid-column:1/-1}
+.sub-card{background:var(--ink);color:var(--cream);box-shadow:8px 8px 0 var(--pink)}
+.sub-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.sub-card h3{font-size:2.4rem;color:var(--yellow)}
+.kvs{display:flex;flex-wrap:wrap;gap:16px 32px}
+.kv{display:flex;flex-direction:column;gap:6px}
+.sub-card .mono{color:var(--yellow)}
+.kv b{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.status{display:inline-block;border-radius:999px;padding:3px 12px;font-weight:800;font-size:.85rem;border:2px solid var(--ink);color:var(--ink);white-space:nowrap}
+.status.ok{background:var(--green)}.status.transit{background:var(--sky)}.status.proc{background:var(--yellow)}.status.pause{background:var(--cream)}.status.off{background:var(--pink)}
+.sub-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn.sm{padding:9px 16px;font-size:.92rem;box-shadow:4px 4px 0 var(--ink)}
+.sub-card .btn.sm{box-shadow:4px 4px 0 var(--pink);border-color:var(--cream)}
+.sub-card .btn.ghost{background:transparent;color:var(--cream)}
+.sub-card .toggle{border-radius:20px;align-self:flex-start}
+.confirm{border:2px dashed var(--yellow);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.meter{height:20px;border:3px solid var(--ink);border-radius:999px;overflow:hidden;background:#fff}
+.meter span{display:block;height:100%;background:var(--pink)}
+.big-num{font-family:var(--display);font-size:3.2rem;line-height:1}
+.big-num small{font-size:1.4rem}
+.hits{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:3px dashed var(--ink);padding-top:14px}
+.hits b{font-family:var(--display);font-weight:400;font-size:2.2rem}
+.table-wrap{overflow-x:auto}
+.orders{width:100%;border-collapse:collapse;min-width:620px}
+.orders th{text-align:left;font-family:var(--mono);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border-bottom:3px solid var(--ink)}
+.orders td{padding:14px 10px;border-bottom:1.5px solid var(--ink);vertical-align:top}
+.orders tr:last-child td{border-bottom:0}
+.orders .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:800;white-space:nowrap}
+.orders td.mono{white-space:nowrap}
+.cell-items{display:flex;flex-direction:column;gap:8px}
+.bananas{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.banana-item{border:3px solid var(--ink);border-radius:20px;background:var(--sky);padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.banana-item svg{width:110px;height:auto}
+.banana-item .note{color:var(--ink)}
+@media (max-width:860px){.acc-grid{grid-template-columns:1fr}}
+@media (max-width:720px){.acc-btn .lbl{display:none}.acc-btn{padding:6px 9px}}
+.logo{white-space:nowrap}
+@media (max-width:480px){.nav .wrap{gap:10px}.logo{font-size:1.15rem;gap:6px}.logo svg{width:30px;height:30px}.lang button{padding:4px 8px}.cart-btn{padding:8px 12px}}
+
 /* language switch */
 .lang{display:inline-flex;border:2.5px solid var(--ink);border-radius:999px;padding:3px;gap:2px;background:var(--cream)}
 .lang button{border:0;background:transparent;border-radius:999px;padding:4px 10px;font-family:var(--mono);font-weight:500;font-size:.8rem}
@@ -239,6 +300,7 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
       <button type="button" data-l="de">DE</button>
       <button type="button" data-l="en">EN</button>
     </div>
+    <button class="acc-btn" id="accBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4.5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3.5 21c1.5-4.5 5-6.5 8.5-6.5s7 2 8.5 6.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span class="lbl" id="accLbl"></span></button>
     <button class="cart-btn" id="cartOpen" data-i18n-aria="cartOpen"><span data-i18n="cart"></span> <span class="cart-count" id="cartCount">0</span></button>
   </div>
 </header>
@@ -443,6 +505,43 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
 
 </main>
 
+<div class="wrap acc" id="account" hidden>
+  <div class="acc-top">
+    <div>
+      <a class="back" href="#top" data-i18n="backShop"></a>
+      <h1 id="accHi"></h1>
+      <p data-i18n="accSub"></p>
+    </div>
+    <button class="btn" id="logoutBtn" type="button" data-i18n="logout"></button>
+  </div>
+  <div class="acc-grid">
+    <article class="card sub-card" id="subCard"></article>
+    <article class="card">
+      <h3 data-i18n="capsule"></h3>
+      <div class="meter" role="img" aria-label="12 / 20"><span style="width:60%"></span></div>
+      <p class="big-num">12<small> / 20</small></p>
+      <p class="note" data-i18n="capsuleSub"></p>
+      <div class="hits"><span class="mono" data-i18n="hitsStat"></span><b>37</b></div>
+    </article>
+    <article class="card wide">
+      <h3 data-i18n="orders"></h3>
+      <div class="table-wrap"><table class="orders" id="ordersTable"></table></div>
+    </article>
+    <article class="card wide">
+      <h3 data-i18n="bananas"></h3>
+      <div class="bananas" id="bananas"></div>
+    </article>
+    <article class="card wide">
+      <h3 data-i18n="accCard"></h3>
+      <div class="kvs">
+        <div class="kv"><span class="mono" data-i18n="email"></span><b id="accEmail"></b><span class="note" id="accSince"></span></div>
+        <div class="kv"><span class="mono" data-i18n="address"></span><b id="accAddr"></b></div>
+      </div>
+      <p class="note" data-i18n="addrNote"></p>
+    </article>
+  </div>
+</div>
+
 <footer>
   <div class="wrap">
     <div class="big" data-i18n="footBig"></div>
@@ -461,6 +560,19 @@ footer .big{font-family:var(--display);font-size:clamp(2.6rem,10vw,7rem);color:v
   <p class="note" id="shipNote"></p>
   <button class="btn primary" id="checkout" type="button" data-i18n="checkout"></button>
 </aside>
+<div class="modal" id="loginModal" hidden>
+  <form class="modal-card" id="loginForm" role="dialog" aria-modal="true" aria-labelledby="loginTitle" novalidate>
+    <button class="x" type="button" id="loginClose" data-i18n-aria="close">✕</button>
+    <h2 id="loginTitle" data-i18n="loginTitle"></h2>
+    <p class="note" data-i18n="loginNote"></p>
+    <label for="loginEmail" data-i18n="email"></label>
+    <input class="txt" id="loginEmail" type="email" autocomplete="off" placeholder="du@beispiel.ch">
+    <label for="loginPw" data-i18n="password"></label>
+    <input class="txt" id="loginPw" type="password" autocomplete="off">
+    <p class="err" id="loginErr" hidden></p>
+    <button class="btn primary" type="submit" data-i18n="loginBtn"></button>
+  </form>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -505,7 +617,23 @@ const I18N = {
     ticker:['Frisch untenrum','No cap','Wipe & shoot','Ab ins Pissoir','Stay fresh','pH 5.5','Dein Gurt, dein Style','Abo jederzeit pausieren'],
     emptyT:'Noch leer.', emptyP:'Gestalte deine Banana oder schnapp dir ein Abo.', remove:'Entfernen',
     shipFree:'Gratis Versand ist dabei.', shipLeft:x=>`Noch ${x} bis zum Gratisversand.`, shipInfo:'Gratis Versand ab CHF 30.',
-    added:n=>`${n} ist im Korb`, coDraft:'Checkout ist im Entwurf noch nicht angebunden', coEmpty:'Leg zuerst etwas in den Korb',
+    login:'Login', myAccount:'Mein Konto', close:'Schliessen',
+    loginTitle:'Willkommen zurück.', loginNote:'Demo-Login: Jede E-Mail-Adresse und jedes Passwort funktionieren. Es wird nichts gesendet.',
+    email:'E-Mail', password:'Passwort', loginBtn:'Einloggen', loginErr:'Bitte gib eine gültige E-Mail-Adresse und ein Passwort ein.',
+    welcome:n=>`Hey ${n}, du bist eingeloggt.`, loggedOut:'Du bist ausgeloggt.',
+    accHi:n=>`Hey ${n}.`, accSub:'Dein Abo, deine Bestellungen und deine Bananas auf einen Blick.', backShop:'← Zurück zum Shop', logout:'Ausloggen',
+    st_active:'Aktiv', st_paused:'Pausiert', st_cancelled:'Gekündigt', st_transit:'Unterwegs', st_delivered:'Zugestellt', st_processing:'In Bearbeitung',
+    yourSub:'Dein Abo', nextDel:'Nächste Lieferung', content:'Inhalt', perDel:'Pro Lieferung', rhythm:'Rhythmus', wipesN:n=>`${n} Tücher`,
+    skip:'Nächste überspringen', skipped:d=>`Übersprungen. Nächste Lieferung: ${d}`, pause:'Pausieren', paused:'Abo pausiert.',
+    resume:'Fortsetzen', resumed:d=>`Weiter geht's. Nächste Lieferung: ${d}`, cancel:'Kündigen',
+    cancelQ:'Abo wirklich kündigen? Du kannst jederzeit wieder starten.', cancelYes:'Ja, kündigen', cancelNo:'Doch nicht',
+    cancelledMsg:'Abo gekündigt.', cancelledText:'Dein Abo ist gekündigt. Es kommen keine Lieferungen mehr.', restart:'Abo neu starten', rhythmSet:w=>`Rhythmus: alle ${w} Wochen.`,
+    capsule:'Kapsel-Füllstand', capsuleSub:'Geschätzt aus deiner letzten Lieferung und deinem Rhythmus.', hitsStat:'Pissoir-Treffer diesen Monat',
+    orders:'Bestellungen', thOrder:'Nr.', thDate:'Datum', thItems:'Inhalt', thStatus:'Status', thTotal:'Total', tracking:'Sendungsnummer',
+    bananas:'Meine Bananas', reorder:'Nochmal bestellen', noBananas:'Noch keine eigene Banana bestellt.', designNow:'Jetzt gestalten',
+    accCard:'Konto & Lieferadresse', address:'Lieferadresse', since:d=>`Mitglied seit ${d}`, country:'Schweiz', addrNote:'Demo-Daten. Adresse und Passwort ändern kommt mit dem echten Shop.',
+    coLogin:'Logg dich ein, um die Bestellung abzuschliessen.', orderPlaced:id=>`Bestellung ${id} ist eingegangen.`,
+    added:n=>`${n} ist im Korb`, coEmpty:'Leg zuerst etwas in den Korb',
     subName:n=>`Abo: ${n}`, subMeta:(n,w)=>`${n} Tücher · alle ${w} Wochen`, refillName:'Refill-Kartusche', refillMeta:'20 Tücher · einmalig',
     uspEyebrow:'Der Gamechanger', uspTitle:'Wischen.<br>Zielen.<br><span class="hl">Weg.</span>',
     uspText:'Kein Mülleimer in Sicht? Egal. Das Pocket-Banana-Tuch schiesst du direkt ins Pissoir. Es zerfällt im Wasser wie Klopapier.',
@@ -556,7 +684,23 @@ const I18N = {
     ticker:['Fresh down there','No cap','Wipe & shoot','Straight into the urinal','Stay fresh','pH 5.5','Your belt, your style','Pause anytime'],
     emptyT:'Still empty.', emptyP:'Design your Banana or grab a subscription.', remove:'Remove',
     shipFree:'Free shipping unlocked.', shipLeft:x=>`${x} more for free shipping.`, shipInfo:'Free shipping from CHF 30.',
-    added:n=>`${n} added to bag`, coDraft:'Checkout is not connected in this draft yet', coEmpty:'Add something to your bag first',
+    login:'Log in', myAccount:'My account', close:'Close',
+    loginTitle:'Welcome back.', loginNote:'Demo login: any email address and password work. Nothing is sent.',
+    email:'Email', password:'Password', loginBtn:'Log in', loginErr:'Please enter a valid email address and a password.',
+    welcome:n=>`Hey ${n}, you're logged in.`, loggedOut:"You're logged out.",
+    accHi:n=>`Hey ${n}.`, accSub:'Your subscription, orders and Bananas at a glance.', backShop:'← Back to shop', logout:'Log out',
+    st_active:'Active', st_paused:'Paused', st_cancelled:'Cancelled', st_transit:'In transit', st_delivered:'Delivered', st_processing:'Processing',
+    yourSub:'Your subscription', nextDel:'Next delivery', content:'Contents', perDel:'Per delivery', rhythm:'Rhythm', wipesN:n=>`${n} wipes`,
+    skip:'Skip next', skipped:d=>`Skipped. Next delivery: ${d}`, pause:'Pause', paused:'Subscription paused.',
+    resume:'Resume', resumed:d=>`Back on. Next delivery: ${d}`, cancel:'Cancel',
+    cancelQ:'Really cancel your subscription? You can restart anytime.', cancelYes:'Yes, cancel', cancelNo:'Keep it',
+    cancelledMsg:'Subscription cancelled.', cancelledText:'Your subscription is cancelled. No more deliveries.', restart:'Restart subscription', rhythmSet:w=>`Rhythm: every ${w} weeks.`,
+    capsule:'Capsule level', capsuleSub:'Estimated from your last delivery and your rhythm.', hitsStat:'Urinal hits this month',
+    orders:'Orders', thOrder:'No.', thDate:'Date', thItems:'Contents', thStatus:'Status', thTotal:'Total', tracking:'Tracking no.',
+    bananas:'My Bananas', reorder:'Order again', noBananas:'No custom Banana ordered yet.', designNow:'Design one now',
+    accCard:'Account & shipping address', address:'Shipping address', since:d=>`Member since ${d}`, country:'Switzerland', addrNote:'Demo data. Changing address and password comes with the real shop.',
+    coLogin:'Log in to complete your order.', orderPlaced:id=>`Order ${id} received.`,
+    added:n=>`${n} added to bag`, coEmpty:'Add something to your bag first',
     subName:n=>`Sub: ${n}`, subMeta:(n,w)=>`${n} wipes · every ${w} weeks`, refillName:'Refill cartridge', refillMeta:'20 wipes · one-time',
     uspEyebrow:'The game changer', uspTitle:'Wipe.<br>Aim.<br><span class="hl">Gone.</span>',
     uspText:'No bin in sight? Who cares. Shoot your Pocket Banana wipe straight into the urinal. It breaks down in water like toilet paper.',
@@ -719,7 +863,12 @@ document.getElementById('cartOpen').addEventListener('click',openCart);
 document.getElementById('cartClose').addEventListener('click',closeCart);
 scrim.addEventListener('click',closeCart);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
-document.getElementById('checkout').addEventListener('click',()=>toast(cart.length?t('coDraft'):t('coEmpty')));
+let pendingCheckout = false;
+document.getElementById('checkout').addEventListener('click',()=>{
+  if(!cart.length) return toast(t('coEmpty'));
+  if(!acc){ closeCart(); pendingCheckout = true; openLogin(); toast(t('coLogin')); return; }
+  placeOrder();
+});
 
 let tt;
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2200);}
@@ -835,6 +984,132 @@ function demoLang(){
   renderDemo(dT); demoBtn();
 }
 
+/* account (demo, stored only in this browser) */
+let acc = null, confirming = false;
+try{ acc = JSON.parse(localStorage.getItem('pb-acc')||'null'); }catch(e){ acc = null; }
+function saveAcc(){ try{ acc ? localStorage.setItem('pb-acc',JSON.stringify(acc)) : localStorage.removeItem('pb-acc'); }catch(e){} }
+const isoToday = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+const addDays = (iso,n) => { const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()+n); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+const fmtDate = iso => new Date(iso+'T12:00:00').toLocaleDateString(lang==='de'?'de-CH':'en-GB',{day:'numeric',month:'long',year:'numeric'});
+function newAccount(email){
+  const raw = (email.split('@')[0].split(/[._\-+0-9]+/).find(Boolean) || 'Banana');
+  const name = raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
+  const sub = w => ({kind:'sub',plan:'daily',n:40,weeks:w,price:14.90});
+  return {
+    email, name, since:'2026-08-18',
+    sub:{plan:'daily',weeks:4,status:'active',last:'2026-10-13',next:'2026-11-10'},
+    orders:[
+      {id:'PB-1042',date:'2026-10-13',status:'transit',track:'99.60.104271.00428917',items:[sub(4)]},
+      {id:'PB-0987',date:'2026-09-15',status:'delivered',items:[sub(4)]},
+      {id:'PB-0931',date:'2026-08-18',status:'delivered',items:[{kind:'pouch',shell:'bubblegum',lid:'banana',pattern:'dots',engrave:'FRESH AF',price:29.90},{kind:'refill',price:9.90}]}
+    ]
+  };
+}
+function updateAccBtn(){
+  $('accLbl').textContent = acc ? acc.name : t('login');
+  $('accBtn').setAttribute('aria-label', acc ? t('myAccount') : t('login'));
+}
+function renderSub(){
+  const s = acc.sub, p = PLANS.find(x=>x.id===s.plan);
+  const cls = {active:'ok',paused:'pause',cancelled:'off'}[s.status];
+  let h = `<span class="mono">${t('yourSub')}</span>
+    <div class="sub-head"><h3>${p.name}</h3><span class="status ${cls}">${t('st_'+s.status)}</span></div>
+    <div class="kvs">
+      <div class="kv"><span class="mono">${t('nextDel')}</span><b>${s.status==='active' ? fmtDate(s.next) : '–'}</b></div>
+      <div class="kv"><span class="mono">${t('content')}</span><b>${t('wipesN')(p.n)}</b></div>
+      <div class="kv"><span class="mono">${t('perDel')}</span><b>${chf(p.price)}</b></div>
+    </div>`;
+  if(s.status === 'cancelled'){
+    h += `<p>${t('cancelledText')}</p><div class="sub-actions"><button class="btn sm primary" type="button" data-act="restart">${t('restart')}</button></div>`;
+  } else {
+    h += `<div class="kv"><span class="mono">${t('rhythm')}</span><div class="toggle" role="group" aria-label="${t('rhythm')}">${[2,4,8].map(w=>`<button type="button" data-w="${w}" aria-pressed="${s.weeks===w}">${t('every')(w)}</button>`).join('')}</div></div>`;
+    if(confirming){
+      h += `<div class="confirm"><p>${t('cancelQ')}</p><div class="sub-actions"><button class="btn sm primary" type="button" data-act="cancelYes">${t('cancelYes')}</button><button class="btn sm ghost" type="button" data-act="cancelNo">${t('cancelNo')}</button></div></div>`;
+    } else {
+      h += `<div class="sub-actions">${s.status==='active'
+        ? `<button class="btn sm" type="button" data-act="skip">${t('skip')}</button><button class="btn sm" type="button" data-act="pause">${t('pause')}</button>`
+        : `<button class="btn sm primary" type="button" data-act="resume">${t('resume')}</button>`}
+        <button class="btn sm ghost" type="button" data-act="cancel">${t('cancel')}</button></div>`;
+    }
+  }
+  $('subCard').innerHTML = h;
+}
+$('subCard').addEventListener('click',e=>{
+  const s = acc && acc.sub; if(!s) return;
+  const wb = e.target.closest('[data-w]'), ab = e.target.closest('[data-act]');
+  if(wb){ s.weeks = +wb.dataset.w; s.next = addDays(s.last, s.weeks*7); toast(t('rhythmSet')(s.weeks)); }
+  else if(ab){
+    const a = ab.dataset.act;
+    if(a==='skip'){ s.next = addDays(s.next, s.weeks*7); toast(t('skipped')(fmtDate(s.next))); }
+    if(a==='pause'){ s.status = 'paused'; toast(t('paused')); }
+    if(a==='resume' || a==='restart'){ s.status = 'active'; s.next = addDays(isoToday(), 3); toast(t('resumed')(fmtDate(s.next))); }
+    if(a==='cancel'){ confirming = true; }
+    if(a==='cancelNo'){ confirming = false; }
+    if(a==='cancelYes'){ confirming = false; s.status = 'cancelled'; toast(t('cancelledMsg')); }
+  } else return;
+  saveAcc(); renderSub();
+});
+function renderOrders(){
+  const rows = acc.orders.map(o=>{
+    const total = o.items.reduce((a,b)=>a+b.price,0);
+    const items = o.items.map(it=>{ const l=label(it); return `<div><b>${esc(l.name)}</b><br><span class="note">${esc(l.meta)}</span></div>`; }).join('');
+    const cls = {transit:'transit',delivered:'ok',processing:'proc'}[o.status];
+    return `<tr><td class="mono">${o.id}</td><td>${fmtDate(o.date)}</td><td><div class="cell-items">${items}${o.track?`<span class="note">${t('tracking')}: ${o.track}</span>`:''}</div></td><td><span class="status ${cls}">${t('st_'+o.status)}</span></td><td class="num">${chf(total)}</td></tr>`;
+  }).join('');
+  $('ordersTable').innerHTML = `<thead><tr><th>${t('thOrder')}</th><th>${t('thDate')}</th><th>${t('thItems')}</th><th>${t('thStatus')}</th><th style="text-align:right">${t('thTotal')}</th></tr></thead><tbody>${rows}</tbody>`;
+}
+function myBananas(){ return acc.orders.flatMap(o=>o.items).filter(i=>i.kind==='pouch'); }
+function renderBananas(){
+  const list = myBananas();
+  $('bananas').innerHTML = list.length ? list.map((b,i)=>`<div class="banana-item">${pouchSVG(b,'acc'+i)}<span class="note">${esc(label(b).meta)}</span><button class="btn sm" type="button" data-re="${i}">${t('reorder')}</button></div>`).join('')
+    : `<div class="banana-item"><p>${t('noBananas')}</p><a class="btn sm" href="#build">${t('designNow')}</a></div>`;
+}
+$('bananas').addEventListener('click',e=>{
+  const b = e.target.closest('[data-re]'); if(!b) return;
+  addItem({...myBananas()[+b.dataset.re]});
+});
+function renderAccount(){
+  if(!acc) return;
+  $('accHi').textContent = t('accHi')(acc.name);
+  $('accEmail').textContent = acc.email;
+  $('accSince').textContent = t('since')(fmtDate(acc.since));
+  $('accAddr').innerHTML = `${esc(acc.name)} Muster<br>Bahnhofstrasse 1<br>8001 Zürich<br>${t('country')}`;
+  renderSub(); renderOrders(); renderBananas();
+}
+function placeOrder(){
+  const id = 'PB-' + (Math.max(...acc.orders.map(o=>+o.id.slice(3))) + 1);
+  acc.orders.unshift({id, date:isoToday(), status:'processing', items:cart.slice()});
+  const sub = cart.find(i=>i.kind==='sub');
+  if(sub) acc.sub = {plan:sub.plan, weeks:sub.weeks, status:'active', last:isoToday(), next:addDays(isoToday(), sub.weeks*7)};
+  cart = []; save(); renderCart(); saveAcc(); closeCart();
+  toast(t('orderPlaced')(id)); goAccount();
+}
+function goAccount(){ if(location.hash==='#konto') route(); else location.hash = 'konto'; }
+function route(){
+  const h = location.hash.slice(1);
+  if(h==='konto' && acc){ $('top').hidden = true; $('account').hidden = false; renderAccount(); window.scrollTo(0,0); return; }
+  $('account').hidden = true; $('top').hidden = false;
+  if(h==='konto'){ openLogin(); return; }
+  const el = h && document.getElementById(h); if(el) el.scrollIntoView();
+}
+window.addEventListener('hashchange', route);
+function openLogin(){ $('loginModal').hidden = false; $('loginErr').hidden = true; $('loginEmail').focus(); }
+function closeLogin(){ $('loginModal').hidden = true; $('loginPw').value = ''; pendingCheckout = false; }
+$('loginClose').addEventListener('click', closeLogin);
+$('loginModal').addEventListener('click', e=>{ if(e.target.id==='loginModal') closeLogin(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !$('loginModal').hidden) closeLogin(); });
+$('loginForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const email = $('loginEmail').value.trim(), pw = $('loginPw').value;
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !pw){ $('loginErr').textContent = t('loginErr'); $('loginErr').hidden = false; return; }
+  const checkout = pendingCheckout;
+  acc = newAccount(email); saveAcc(); closeLogin(); updateAccBtn();
+  toast(t('welcome')(acc.name));
+  if(checkout && cart.length) placeOrder(); else goAccount();
+});
+$('accBtn').addEventListener('click', ()=> acc ? goAccount() : openLogin());
+$('logoutBtn').addEventListener('click', ()=>{ acc = null; confirming = false; saveAcc(); updateAccBtn(); location.hash = 'top'; toast(t('loggedOut')); });
+
 /* language */
 function applyLang(){
   document.documentElement.lang = lang;
@@ -845,7 +1120,7 @@ function applyLang(){
   const words = t('ticker');
   document.getElementById('ticker').innerHTML = [...words,...words].map(w=>`<span>${w} ✦</span>`).join('');
   document.getElementById('heroPouch').innerHTML = pouchSVG({shell:'bubblegum',lid:'banana',pattern:'dots',engrave:'FRESH AF'},'hero');
-  renderBuild(); renderPlans(); renderCart(); demoLang();
+  renderBuild(); renderPlans(); renderCart(); demoLang(); updateAccBtn(); renderAccount();
 }
 document.getElementById('lang').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
@@ -854,6 +1129,7 @@ document.getElementById('lang').addEventListener('click',e=>{
   applyLang();
 });
 applyLang();
+route();
 </script>
 </body>
 </html>
